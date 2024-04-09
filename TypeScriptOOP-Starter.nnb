@@ -1,0 +1,1842 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "[Object Oriented Programming](#oop)<br>\n&emsp;[Classes](#classes)<br>\n&emsp;&emsp;[Read Only Properties](#rop)<br>\n&emsp;&emsp;[Optional Properties](#op)<br>\n&emsp;&emsp;[Access Modifiers](#access)<br>\n&emsp;&emsp;[Declaring Properties in Constructor](#conprop)<br>\n&emsp;&emsp;[Getters](#getter)<br>\n&emsp;&emsp;[Setters](#setter)<br>\n&emsp;&emsp;[Index Signatures](#idxsign)<br>\n&emsp;&emsp;[Static](#static)<br>\n&emsp;[Inheritance](#inherit)<br>\n&emsp;&emsp;[Method Overrides](#methover)<br>\n&emsp;&emsp;[Override Keyword](#overrride)<br>\n&emsp;&emsp;[Polymorphism](#polym)<br>\n&emsp;[Design Patterns](#dp)<br>\n&emsp;[Abstract Classes](#abs)<br>\n&emsp;&emsp;[Flying Ducks](#fly)<br>\n&emsp;&emsp;[Decoy Ducks](#decoy)<br>\n&emsp;&emsp;[Exercise #1](#ice1)<br>\n&emsp;[Interfaces](#interfaces)<br>\n&emsp;&emsp;[Exercise #2](#ice2)<br>\n&emsp;&emsp;[Rubber Duck / Final Pattern](#rubber)<br>\n&emsp;&emsp;[More On Polymorphism](#mpoly)<br>\n&emsp;&emsp;[Programming to Interface](#ptoi)<br>\n&emsp;&emsp;[Extending Interfaces](#xi)<br>\n[Generics](#gen)<br>\n&emsp;[Generic Functions](#gf)<br>\n&emsp;[Generic Classes](#gc)<br>\n&emsp;[Multiple Generics](#mg)<br>\n&emsp;[Generic Interfaces](#gi)<br>\n&emsp;[Generic Constraints](#gcon)<br>\n&emsp;[keyof](#keyof)<br>\n&emsp;[Type Mapping](#typemap)<br>\n&emsp;[Optional&lt;T&gt;](#optgen)<br>\n&emsp;[Read Only&lt;T&gt;](#rogen)<br>\n&emsp;[Built In Utility Classes](#util)<br>\n[Homework](#hw)<br>\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"oop\"></a>\n# Object Oriented Programming"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Object-oriented programming (OOP) is a programming paradigm that focuses on the organization and manipulation of data as objects, rather than simply processing logic or functions. Good OOP practices involve designing reusable and extensible code by creating classes, interfaces, and abstract classes.\n\nWhile some programming languages like Java are purely OOP, others like Typescript combine OOP principles with scripting capabilities. In OOP, a model is designed to represent a real-life entity, and then that model is used to create different but similar objects. For example, a Car can be considered a model that defines the properties and behaviors of a generic car, and a specific car like a Ford Ranger can be an instance of that model that behaves like all other cars but may have its own unique characteristics."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"classes\"></a>\n\n## Classes"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "To define the types of your properties, you write them at the top of the class and then using the `this` keyword you can assign them in the constructor"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class Car {\r\n    //define the type of the properties\r\n    make:string\r\n    model:string\r\n    year:number\r\n\r\n    constructor(make: string, model:string, year:number){\r\n        // assign the properties\r\n        this.make = make\r\n        this.model = model\r\n        this.year = year\r\n    }\r\n\r\n    drive(miles:number):void{\r\n        console.log(`The ${this.year} ${this.make} ${this.model} has driven ${miles} miles`)\r\n    }\r\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let delorean = new Car('DeLorean', 'DMC-12', 1981);\r\nconsole.log(delorean)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Car { make: 'DeLorean', model: 'DMC-12', year: 1981 }",
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "delorean.drive(45);"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "The 1981 DeLorean DMC-12 has driven 45 miles",
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let bronco = new Car('Ford', 'Bronco', 1994)\r\nconsole.log(bronco)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Car { make: 'Ford', model: 'Bronco', year: 1994 }",
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "bronco.drive(88)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "The 1994 Ford Bronco has driven 88 miles",
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "bronco.year = 1992;\r\nconsole.log(bronco)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Car { make: 'Ford', model: 'Bronco', year: 1992 }",
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"rop\"></a>\n\n### Read Only Properties"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Since IDs should never change lets make a readonly ID on our Car Class"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class Car2 {\r\n    //define the type of the properties\r\n    readonly id:number\r\n    make:string\r\n    model:string\r\n    year:number\r\n\r\n    constructor(id:number, make: string, model:string, year:number){\r\n        // assign the properties\r\n        this.id = id\r\n        this.make = make\r\n        this.model = model\r\n        this.year = year\r\n    }\r\n\r\n    drive(miles:number):void{\r\n        console.log(`The ${this.year} ${this.make} ${this.model} has driven ${miles} miles`)\r\n    }\r\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let delorean2 = new Car2(1, 'DeLorean', 'DMC-12', 1981)\r\nconsole.log(delorean2);"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Car2 { id: 1, make: 'DeLorean', model: 'DMC-12', year: 1981 }",
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "delorean2.id = 123;"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "\u001b[33m123\u001b[39m"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "console.log(delorean2)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Car2 { id: 123, make: 'DeLorean', model: 'DMC-12', year: 1981 }",
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"op\"></a>\n\n### Optional Properties"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Lets make the car have an optional nickname like Kitt, or Herbie.  Not every car will have such a cool nickname"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"access\"></a>\n\n### Access Control keywords"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Access Control keywords are used in many languages, and TypeScript uses the most common three `public`, `protected`, `private`.  These access modifiers tell the computer what can access and modify the property/method.\n\n`public` -- this property is available  anywhere.  If no access modifier is used, the property defaults to public\n\n`protected` -- this property can be used within the class and within the derived classes, but not from outside the class\n\n`private`  -- this property can only be used from within the class that declared it.\n\nThese access modifiers are the key to a concept known and <b>encapsulation</b>. This is basically the idea of data hiding to prevent properties from being modified or used by people/programs that it shouldn't be used by, or to control the modifications of these properties."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<b>Now</b> Lets assign some private and public access modifiers"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// Python API Wrapper example - Does not actually work!!!!\n// Example shows encapsulation. The people using the program don't \n// actually use the _get method. \n\nclass APIWrapper:\n    def _get(self, data):\n        url = 'www.someurl.com/'+data\n        res = requests.get(url)\n        return res.json()\n\n    def get_pokemon(self, poke_name):\n        data = self._get(poke_name)\n        pokemon = Pokemon(data)\n        return pokemon\n\n    def get_berry(self, berry_name):\n        data = self._get(berry_name)\n        berry = Berry(data)\n        return berry\n\n\n\n\n\nclient = APIWrapper()\npikachu = client.get_pokemon('pikachu');\ncheri = client.get_berry('cheri');\n\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "\n// Private variable `id` is able to be accessed here because it was accessed in the class itself"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Private variables cannot be access outside of the class"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// public properties can be accesses outside of the class\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"conprop\"></a>\n\n### Declaring Properties in the Constructor"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "When passing values to our constructor we can give the parameters an access modifier and no longer declare them at the top of the document.  Optional properties will still need to be declared at the top.\n\n<b>Note: </b> Like in Python we will name our private properties with an underscore.  This is an older convention and many may argue it is not applicable anymore, often it's replaced with a `$` at the beginning of the variable name, or some custom convention.  Google and Apple style guide chastise the use of the `_` prefix, so in your applications do not use this `_` convention.  For this workbook to make things clear, we will use a prefix of `_` for private variables and a postfix of `$` for protected variables"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"getter\"></a>\n\n### Getters"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "We can access varaibles with a getter.  This helps us encapsulate the property while still allowing view access.  Using getters and setters in your classes is good practice and should always be employed in your classes."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "In the following example we decided since a car's make and model can not be changed once it is made we will make those properties private, but the nickname of a car can be changed by anyone at anytime so we will make that public."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Public properties can be changed from outside the class"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Private Properties can not be accessed outside the class"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Public getters can make private variables viewable outside the class"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"setter\"></a>\n\n### Setters"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "If a property is changed we often want to check or process the data that the property is getting changed to.  This makes setters very important.  They will allow us to define what happens when we change our variable.\n\nWe can even create getters for things that are not properties.\n\n<strong>Note: </strong> Do not try and set a return type on a setter"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Setters can allow us to change a private variable, while still letting the class decide how to properly enact the change."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"idxsign\"></a>\n\n### Index Signatures"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Index Signatures allow us to dynamically (after creation) change the properties of our class.  This can be done in JS but in TS you get an error\n\nsyntax:\n```\n[placeHolder:DatatypeOfProperty]:DataTypeContainedInProperty\n```"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "//How we do this in JS\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// To set properties that are Index Signatures, use bracket notation\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"static\"></a>\n\n### Static"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "The `static` keyword denotes that the property maintains its value across all instances, and also must be used without an instance.\n\nTo access a Static Property we call its by class name. `ClassName.staticProperty`"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "#### Accessing"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// Can not Access"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "All Members of the Counter class share the same count property!"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "//Nope\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"inherit\"></a>\n\n## Inheritance"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "We are going to make a Duck class then define children classes to represent different kinds of ducks.  \n\nHere we will use the `protected` access modifier for the first time.  Remember protected means that the child class can access the property, while if it was made private it would not be able to be accessed in the child class\n\n<b>Note: </b>In python a class can inherit from multiple classes.  This is not possible in JavaScript/TypeScript.  You can only extend one class in JS/TS this is to prevent the so-called diamond problem (when two extended classes have the same base class).  This is fine and normal in most languages because JS also provides Interfaces and a class can implement many Interfaces (more on interfaces later)"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "#### In the Child Class"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "To inherit from a class in JS/TS we use the extends keyword\n\n<b>Note </b> When adding parameters that are part of the parent class we do not add access modifiers"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                " // Duck's don't have a color"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "### Protected Variables are Accessible in the Child Class"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Try switching the access modifier on serialNo to `private` and you will see you cannot access it in the Roku class."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// If we change the serialNo to a private property instead of protected,\n// the child class (Roku) is not able to access serialNo.\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"methover\"></a>\n\n### Method Overrides"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Now we notice that our mallard makes a generic animal sounds instead of the mallard's quack sound, so we should implement a different way to quack that is specific to mallards, we can do this by overriding the parent class method"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "##### Implicit Overrides"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "If you create a method in a child class with the same name as a method in the parent class, the child class will use the method definition from the child class, this is called a <b>method override</b>  This is done implicitly by the computer.  This is now considered bad practice and it is recommended to always use the `override` keyword (more on that next)"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"override\"></a>\n##### Explicit Overrides"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "TS 4.3 they added support for the `override` keyword.  This notebook runs 4.1, so the override keyword will not work.  Without it you get an implicit override, where TS infers you are overriding when you use the same name.\n\nThe `override` keyword is really useful for when you change your base class and maybe remove a method.  The Child classes with now get an error saying there is no method to override. "
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Since this notebook does not support the `override` keyword, we will have you checkout this file using StackBlitz\n\n[https://stackblitz.com/edit/w9pgd4?file=index.ts](https://stackblitz.com/edit/w9pgd4?file=index.ts)\n\nwhen using this code be sure to open the console (on the bottom right below the browser output)"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"polym\"></a>\n\n### Polymorphism"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Polymorphism means having many forms.  What we have learned in TS so far is that you always need to know the datatype of your variables.  And if you say make an array you have to define what is in that array.  \n\nWhat polymorphism says is if one class (say MallardDuck) inherits from a class (say Duck) then every MallardDuck is a Duck. Also, all other Children of the Duck Class (say RedHeadedDuck) are also Ducks; and not to forget that Ducks are also Ducks.  This means we can build an Array&lt;Ducks&gt; and include Ducks, RedHeadedDucks, and Mallard Ducks.\n    \nIn OOP we often talk about the <b>Open-Closed Principal</b> The open–closed principle states \"software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification\";\n    \nPolymorphism is a key way we can help achieve this goal"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<b>Lets </b> make another Type of Duck the ReadHeadedDuck"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Let’s make an array of Ducks.  Since all Duck Types inherit from Duck we can declare the array and array of Ducks."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Now Lets watch Polymorphism in action\n\nThis is really cool, because all Ducks are implementing the same behaviors (methods) we can invoke them and get the results from each individual class."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"dp\"></a>\n\n## OOP Design Patterns"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "There are alot of ways to design systems with classes and Abstract classes and interfaces (more of these last two things coming up)\n\nThe way you connect your Classes/Interface/Abstract Class make up your Design Pattern.  We are going to walk you through a good OOP design pattern in the next few sections"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"abs\"></a>\n\n## Abstract Classes"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Our `Duck` Class now has a problem.  We shouldn't be able to create a plain duck.  All Ducks in the world are some variation on the Duck class, but a plain generic Duck should never exist.  This means we shouldn't be able to make a new duck\n\n`let duck = Duck(23)` Should not be allowed because this doesn't make logical sense.\n\nDon't fear because we have a solution for this.  We will use an `Abstract Class`  An Abstract Class is a class typically without method implementations, or implementations that function the same for all children classes.  In an Abstract class we merely define that a method should exist and that the children classes should define their own implantation..\n\nWe use the keyword `abstract` to define a method that is abstract (or will not have an implementation) We also don't give that function a body.  If we don't define the method as abstract then it will need a method body"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "//Error"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<b>What happened with Color?</b>"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Lets Try and get the ducks color the same way.\n\nwhen we run the code below we get \n\n```Property 'color' does not exist on type 'Duck'.```\nWe know MallardDuck and RedheadedDuck have the property color, but since we are accessing the RedHeaded and Mallard Ducks as a Duck Type (since they are in a array of Ducks not as RedheadedDuck|MallardDuck) we can not use the color property unless it is defined in the parent Abstract class.\n\nTo fix this we can go back to our base class of `Duck` and add the property `color:string` at the top of our `Duck` class.  Then rerun the cells defining `MallardDuck` and `RedheadedDuck` (to get the new copy of the Duck class) and then rerun the cell below and we should see out expected results"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"fly\"></a>\n\n#### Flying Ducks"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Let's imagine now we are tasked with adding the ability to fly to our ducks.  This will be simple to add a new method to our Abstract base class `Duck` then implement its specific functionality in the children classes `MallardDuck` and `RedHeaded Duck`.  And for simplicity lets remove the color property"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"decoy\"></a>\n\n#### Decoy Ducks "
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Okay that was easy enough, but now we are required to make another type of duck, a duck decoy.  Lets Build our `DecoyDuck` class"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "We Have now come across a problem with using the abstract class to derive all our Duck Types.  A Decoy Duck has no implementation of fly, and thus we should not be implementing a fly method on a decoy duck.\n\nNever Fear! Interfaces are here!  An Interface lets you define methods that a class needs to implement.  It can also be used as a type."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"ice1\"></a>\n\n## In Class Exercise #1"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Create a class `Car` and then create 2 car subclasses `SmartCar`, `Truck`.\nAll Cars should be able to `brake` `drive` and `honk`\n\n- When a SmartCar drives it makes `hummmm` sound and when it honks it makes a `MMmeep` sound\n- When a Truck drives it makes a `vrooom` sound and when it honks it makes `BWaaaaaahp`\n- When a Truck or a SmartCar brakes it makes `squeeel` sound"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "//Solution\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"interfaces\"></a>\n\n### Interfaces"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Let's redefine our Ducks now using Interfaces. Interfaces are generally names with the suffix `able` because the Interface says anything that implements me is able to do these actions.\n\nInterfaces also work with Polymorphism. \n\nTo say a class uses an interface we use the keyword `implements`\n\nA class can implement many interfaces, yet extend only one class.\n\nAn Interface can enforce many different methods/properties, but in this example we will keep it to one method per interface.  The Age property should belong to all ducks still, so we will keep the Duck base class to hold the age, for these examples we will assume the ducks all age exactly the same, so there will be no need to override the getters for age.\n\n<i>Interface vs Type</i>\n\nInterfaces and Types are extremely similar in TypeScript and for the most part Interfaces and Types can be used interchangeably in TypeScript.\n\nfor an in-depth discussion on the differences visit https://www.educba.com/typescript-type-vs-interface/\n\nInterfaces are created to say this class will work with anything that needs this interface.  You can think of a CD as an interface.  There are tons of different CDs with different information on them, but they can all be put into a CD player to play there contents.  The CD is an interface that works with a CD Player then different artists can use the CD interface to create there own CDs filled with their own music.\n\n\n<strong>Note </strong> Interfaces do not have method bodies (Abstract classes have method bodies)"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "We can use the Interface as a type to make an array of all the ducks that Quack"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// Interfaces can be used on other classes as well\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"ice2\"></a>\n## In Class Exercise #2"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Create a Interface called `Playable` that states anything implementing it should be able to `play` and create Classes: CD, Tape, Record to implement your interface\n\nTo implement play:\n\n- CDs will print \"Spins and read with Laser\"\n- Tapes will print \"Magnetic Tape is read\"\n- Records will print \"Needle reads grooves\""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "//Solution\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"rubber\"></a>\n\n#### Rubber Duck / Final Design"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Lets take this a step futher, because we know we will be making a lot more types of ducks in the future.  Lets now assume a mallard and redheaded duck both quack and fly and swim the same and most ducks will have the same sort of flying and quacking and swimming mechanism.  Decoy ducks still fly, quack, and swim differently.  \n\nNow we are tasked with creating a Rubber Ducky.  A Rubber ducky will not be able to fly like our Decoy Duck, It will quack in its own squeaky way, and it will swim like the Decoy duck by floating.\n\nThis is our final iteration of this Duck Design"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"mpoly\"></a>\n\n### More Polymorphism"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "We can now use the parent class of duck to declare all our duck types and expect the all same abilities to work on each instance of duck"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "We also have the ability to change the implementations with this set up.  Lets make a RubberDuck learn to fly"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"ptoi\"></a>\n\n#### Programming To Interface"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "This design can be further improved, but it is a quite flexible design.  What we are learning is the idea of <b>Programming to Interface</b>.  This is the idea could really be stated <b>program to a supertype</b>.  The declared type of the variables should be a supertype, usually an abstract class or interface, so that the objects assiged to those variables can be of any concrete implementation of the supertype, which means the decalring class doesn't have to know about the object types! "
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"xi\"></a>\n\n### Extending Interfaces"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "An interface can also be used alot like a type.  The main difference here is an interface describes the object while a type defines the object.  \n\nIn TypeScript, We can even extend interfaces with the extends keyword."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"gen\"></a>\n\n# Generics"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Sometimes we want to allow for all sorts of types for our variables.  We know using an `any` type is bad practice, so how can we accomplish this?  With the use of Generics!"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "\n<a id=\"gf\"></a>\n### Generic Functions"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "To create a generic function we will append the class name with `<` `placeholder to represent any type` `>` and we type the parameters with the placeholder.\n\n\nThis is very similar to how this is done in C++.\n\nYou will often see the placeholder labeled as `T` this stands for Template Class, but you can use anything you want here, but I would keep it to a single letter.\n\nWhen calling the function we can gernally just use our argument like normal, but if for some reason the compiler is unsure of our type we can append  `<` `Generic Type Placeholder` `>` after the name of the function"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"gc\"></a>\n\n### Generic Classes"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "To create a generic class we will append the class name with `<` `placeholder to represent any type` `>` and we type the parameters with the placeholder.\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// Will not work, because we said T is a number"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// Will not work, because we said T is a string"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"mg\"></a>\n\n### Multiple Generics"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"gi\"></a>\n\n### Generic Interfaces"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "The following code will error when ran.  Be sure to use the autocomplete to see the effect of generics."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"gcon\"></a>\n\n### Generic Constraints"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Maybe we want to write a generic function that works with all ducks that extend the `Quacks` ability class we created earlier.  We can do this by saying `T extends Quacks`"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"keyof\"></a>\n\n### keyof"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Sometime we need to work with the keys of an object, and if any string is allowed TypeScript could give us and Error (We won't go into these circumstances for brevity), so the `keyof` Operator restricts our options only to valid keys"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"typemap\"></a>\n\n### Type Mapping"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Imagine we have an interface and all the properties are required.  Now lets imagine we need another version of this interface that allow all the properties to be optional.  We still need our original Required Interface, so we can't edit that and make the properties optional.  We could create a second Interface will all the same properties and make them optional.  This make a ton of work for us to maintain the interface because now we have to add properties in two locations.  The Solution for this is <b>Type Mapping</b>\n\nThis will take use of two tools we have already learned `keyof` and <b>Type Signatures</b>"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"optgen\"></a>\n\n### Optional&lt;T&gt;"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// Everything in the garage interface is required\n\n\n\n//Type Mapping works by creating a type not interface\n// It uses Type Signatures along with keyof\n// remember a ? at the end makes something optional\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"rogen\"></a>\n\n### ReadOnly&lt;T&gt;"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "This will only work for Garage types, but with generics we can make this work for any type.  Instead of making it optional this time lets make it Read Only"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"util\"></a>\n\n### Built in Utility Types"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "The good news is we don't have to write this code normally because TypeScript provides a whole library of these utility types.\n\n[https://www.typescriptlang.org/docs/handbook/utility-types.html](https://www.typescriptlang.org/docs/handbook/utility-types.html)"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"hw\"></a>\n\n## Homework"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Design a flexible OOP system to describe characters in a RPG game\n\nThere are 4 Unique Characters which use Different Types of Attacking mechanisms and Defending mechanisms.\n\n- Orges - fights with club and defends with shield\n- Peons - fights with club and defends with shield\n- Knights - fights with a Sword and defends with Armor\n- Archer - fights with Bow and Arrow and has only is tunic to protect them\n\n- All Characters can collect gold and this will always be the same for every new type of character\n\nAt the end of this each character should be able to attack and defend and collect gold. If needed any character should be able to change his fighting style, say if a knight losing his sword, but finds a club he should be able to change his fighting mechanism to use the club\n\n<b>Hint: </b> To complete this assignment you will need multiple classes and interfaces and an Abstract class\n\nYou can use our [Final Rubber Ducky Walkthrough](#rubber) example as a guide "
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "//Solution\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        }
+    ]
+}

@@ -1,0 +1,1902 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "[Object Oriented Programming](#oop)<br>\n&emsp;[Classes](#classes)<br>\n&emsp;&emsp;[Read Only Properties](#rop)<br>\n&emsp;&emsp;[Optional Properties](#op)<br>\n&emsp;&emsp;[Access Modifiers](#access)<br>\n&emsp;&emsp;[Declaring Properties in Constructor](#conprop)<br>\n&emsp;&emsp;[Getters](#getter)<br>\n&emsp;&emsp;[Setters](#setter)<br>\n&emsp;&emsp;[Index Signatures](#idxsign)<br>\n&emsp;&emsp;[Static](#static)<br>\n&emsp;[Inheritance](#inherit)<br>\n&emsp;&emsp;[Method Overrides](#methover)<br>\n&emsp;&emsp;[Override Keyword](#overrride)<br>\n&emsp;&emsp;[Polymorphism](#polym)<br>\n&emsp;[Design Patterns](#dp)<br>\n&emsp;[Abstract Classes](#abs)<br>\n&emsp;&emsp;[Flying Ducks](#fly)<br>\n&emsp;&emsp;[Decoy Ducks](#decoy)<br>\n&emsp;&emsp;[Exercise #1](#ice1)<br>\n&emsp;[Interfaces](#interfaces)<br>\n&emsp;&emsp;[Exercise #2](#ice2)<br>\n&emsp;&emsp;[Rubber Duck / Final Pattern](#rubber)<br>\n&emsp;&emsp;[More On Polymorphism](#mpoly)<br>\n&emsp;&emsp;[Programming to Interface](#ptoi)<br>\n&emsp;&emsp;[Extending Interfaces](#xi)<br>\n[Generics](#gen)<br>\n&emsp;[Generic Functions](#gf)<br>\n&emsp;[Generic Classes](#gc)<br>\n&emsp;[Multiple Generics](#mg)<br>\n&emsp;[Generic Interfaces](#gi)<br>\n&emsp;[Generic Constraints](#gcon)<br>\n&emsp;[keyof](#keyof)<br>\n&emsp;[Type Mapping](#typemap)<br>\n&emsp;[Optional&lt;T&gt;](#optgen)<br>\n&emsp;[Read Only&lt;T&gt;](#rogen)<br>\n&emsp;[Built In Utility Classes](#util)<br>\n[Homework](#hw)<br>\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"oop\"></a>\n# Object Oriented Programming"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Object-oriented programming (OOP) is a programming paradigm that focuses on the organization and manipulation of data as objects, rather than simply processing logic or functions. Good OOP practices involve designing reusable and extensible code by creating classes, interfaces, and abstract classes.\n\nWhile some programming languages like Java are purely OOP, others like Typescript combine OOP principles with scripting capabilities. In OOP, a model is designed to represent a real-life entity, and then that model is used to create different but similar objects. For example, a Car can be considered a model that defines the properties and behaviors of a generic car, and a specific car like a Ford Ranger can be an instance of that model that behaves like all other cars but may have its own unique characteristics."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"classes\"></a>\n\n## Classes"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "To define the types of your properties, you write them at the top of the class and then using the `this` keyword you can assign them in the constructor"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class Car{\r\n    //define the types of the properties\r\n    make: string\r\n    model: string\r\n    year: number\r\n    \r\n    constructor(make: string, model: string, year: number){\r\n        //assign the properties\r\n        this.make=make\r\n        this.model=model\r\n        this.year=year\r\n    }\r\n    \r\n    drive(miles:Number):void{\r\n        console.log(\"You drove \", miles, \"miles\")\r\n    }\r\n}\r\n    \r\nlet delorean1=new Car(\"DeLorean\", \"DMC-12\", 1981)\r\ndelorean1"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Car { make: \u001b[32m'DeLorean'\u001b[39m, model: \u001b[32m'DMC-12'\u001b[39m, year: \u001b[33m1981\u001b[39m }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "delorean1.drive(15)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "You drove  \u001b[33m15\u001b[39m miles",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"rop\"></a>\n\n### Read Only Properties"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Since IDs should never change lets make a readonly ID on our Car Class"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class Car{\n    //define the types of the properties\n    readonly id:number\n    make: string\n    model: string\n    year: number\n    \n    constructor(id:number, make: string, model: string, year: number){\n        //assign the properties\n        this.id=id\n        this.make=make\n        this.model=model\n        this.year=year\n    }\n    \n    drive(miles:Number):void{\n        console.log(\"You drove \", miles, \"miles\")\n    }\n}\n    \nlet delorean2=new Car(1, \"DeLorean\", \"DMC-12\", 1981)\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "delorean2.id=123"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:11 - Cannot assign to 'id' because it is a read-only property.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"op\"></a>\n\n### Optional Properties"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Lets make the car have an optional nickname like Kitt, or Herbie.  Not every car will have such a cool nickname"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class Car{\n    //define the types of the properties\n    readonly id:number\n    make: string\n    model: string\n    year: number\n    nickname?: string\n    \n    constructor(id:number, make: string, model: string, year: number){\n        //assign the properties\n        this.id=id\n        this.make=make\n        this.model=model\n        this.year=year\n    }\n    \n    drive(miles:Number):void{\n        console.log(\"You drove \", miles, \"miles\")\n    }\n}\n    \nlet delorean3=new Car(1,\"DeLorean\", \"DMC-12\", 1981)\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "delorean3.nickname=\"The DeLorean\"\ndelorean3"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Car {",
+                                "  id: \u001b[33m1\u001b[39m,",
+                                "  make: \u001b[32m'DeLorean'\u001b[39m,",
+                                "  model: \u001b[32m'DMC-12'\u001b[39m,",
+                                "  year: \u001b[33m1981\u001b[39m,",
+                                "  nickname: \u001b[32m'The DeLorean'\u001b[39m",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"access\"></a>\n\n### Access Control keywords"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Access Control keywords are used in many languages, and TypeScript uses the most common three `public`, `protected`, `private`.  These access modifiers tell the computer what can access and modify the property/method.\n\n`public` -- this property is available  anywhere.  If no access modifier is used, the property defaults to public\n\n`protected` -- this property can be used within the class and within the derived classes, but not from outside the class\n\n`private`  -- this property can only be used from within the class that declared it.\n\nThese access modifiers are the key to a concept known and <b>encapsulation</b>. This is basically the idea of data hiding to prevent properties from being modified or used by people/programs that it shouldn't be used by, or to control the modifications of these properties."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<b>Now</b> Lets assign some private and public access modifiers"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class Car{\n    //define the types of the properties\n    private readonly id:number\n    public make: string\n    public model: string\n    public year: number\n    public nickname?: string\n    \n    constructor(id:number, make: string, model: string, year: number){\n        //assign the properties\n        this.id=id\n        this.make=make\n        this.model=model\n        this.year=year\n    }\n    \n    drive(miles:Number):void{\n        console.log(\"You drove \", miles, \"miles\")\n    }\n    \n    printInfo():void{\n        console.log(`The Car id ${this.id} is a`,\n                    this.year,\n                    this.make,\n                    this.model,\n                    this.nickname ? \"that is called \" + this.nickname  : \" that has no cool name\")\n    }\n}\n    \nlet delorean4=new Car(1,\"DeLorean\", \"DMC-12\", 1981)\n// delorean4.nickname=\"The Delorean\"\n\n//Private Variable id prints here, because it was access by the class itself\ndelorean4.printInfo()\n"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "The Car id 1 is a \u001b[33m1981\u001b[39m DeLorean DMC-12  that has no cool name",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Private variables cannot be access outside of the class"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "delorean4.id "
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:11 - Property 'id' is private and only accessible within class 'Car'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"conprop\"></a>\n\n### Declaring Properties in the Constructor"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "When passing values to our constructor we can give the parameters an access modifier and no longer declare them at the top of the document.  Optional properties will still need to be declared at the top.\n\n<b>Note: </b> Like in Python we will name our private properties with an underscore.  This is an older convention and many may argue it is not applicable anymore, often it's replaced with a `$` at the beginning of the variable name, or some custom convention.  Google and Apple style guide chastise the use of the `_` prefix, so in your applications do not use this `_` convention.  For this workbook to make things clear, we will use a prefix of `_` for private variables and a postfix of `$` for protected variables"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class Car{\n    //define the types of the properties\n    public nickname?: string\n    \n    constructor(private readonly _id:number,\n                 public make: string,\n                 public model: string,\n                 public year: number){}\n    \n    drive(miles:Number):void{\n        console.log(\"You drove \", miles, \"miles\")\n    }\n    \n    printInfo():void{\n        console.log(`The Car id ${this._id} is a`,\n                    this.year,\n                    this.make,\n                    this.model,\n                    this.nickname ? \"that is called \" + this.nickname  : \" that has no cool name\")\n    }\n}\n    \nlet delorean4=new Car(1,\"DeLorean\", \"DMC-12\", 1981)\ndelorean4.nickname=\"The Delorean\"\n\n//Private Variable id prints here, because it was access by the class itself\ndelorean4.printInfo()"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "The Car id 1 is a \u001b[33m1981\u001b[39m DeLorean DMC-12 that is called The Delorean",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"getter\"></a>\n\n### Getters"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "We can access varaibles with a getter.  This helps us encapsulate the property while still allowing view access.  Using getters and setters in your classes is good practice and should always be employed in your classes."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "In the following example we decided since a car's make and model can not be changed once it is made we will make those properties private, but the nickname of a car can be changed by anyone at anytime so we will make that public."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class Car{\n    constructor(private _make:string, private _model:string, public nickname:string){}\n    \n    get make():string {return this._make}\n    \n    get model():string{\n        //maybe we want to validate that there is a model before we send it back\n        if(this._model){\n            return this._model\n        }else{\n            return \"No Model Data\"\n        }\n    }\n    \n}\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let knightRider=new Car(\"Pontiac\", \"\", \"Kitt\")\nknightRider"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Car { _make: \u001b[32m'Pontiac'\u001b[39m, _model: \u001b[32m''\u001b[39m, nickname: \u001b[32m'Kitt'\u001b[39m }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "knightRider.nickname"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Kitt",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Public properties can be changed from outside the class"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "knightRider.nickname = \"Kitt 2000\""
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Kitt 2000",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "knightRider.nickname"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Kitt 2000",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Private Properties can not be accessed outside the class"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "knightRider._make"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:13 - Property '_make' is private and only accessible within class 'Car'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Public getters can make private variables viewable outside the class"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "knightRider.make"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Pontiac",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "knightRider._model"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:13 - Property '_model' is private and only accessible within class 'Car'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "knightRider.model"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "No Model Data",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"setter\"></a>\n\n### Setters"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "If a property is changed we often want to check or process the data that the property is getting changed to.  This makes setters very important.  They will allow us to define what happens when we change our variable.\n\nWe can even create getters for things that are not properties.\n\n<strong>Note: </strong> Do not try and set a return type on a setter"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class Car{\n    constructor(private _make:string, private _model:string, public nickname:string){}\n    \n    get make():string {return this._make}\n    \n    get model():string{\n        //maybe we want to validate that there is a model before we send it back\n        if(this._model){\n            return this._model\n        }else{\n            return \"No Model Data\"\n        }\n    }\n    \n    get makeModel():string{\n        return `${this._make} ${this._model}`\n    }\n    \n    set make(newMake:string){\n        this._make=newMake\n    }\n    \n    set model(newModel:string){\n        //Pintos are terrible cars and should never be allowed to exist again\n        if (newModel && newModel!==\"Pinto\"){\n            this._model=newModel\n        }else{\n            this._model=\"Wrecked\"\n        }\n    }\n}\n\nlet knightRider2=new Car(\"Pontiac\", \"\", \"Kitt\")\nknightRider2"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Car { _make: \u001b[32m'Pontiac'\u001b[39m, _model: \u001b[32m''\u001b[39m, nickname: \u001b[32m'Kitt'\u001b[39m }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Setters can allow us to change a private variable, while still letting the class decide how to properly enact the change."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "knightRider2.make=\"BMW\"\nknightRider2.model=\"Pinto\"\nconsole.log(knightRider2)\nconsole.log(knightRider2.makeModel)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Car { _make: \u001b[32m'BMW'\u001b[39m, _model: \u001b[32m'Wrecked'\u001b[39m, nickname: \u001b[32m'Kitt'\u001b[39m }",
+                                "BMW Wrecked",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"idxsign\"></a>\n\n### Index Signatures"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Index Signatures allow us to dynamically (after creation) change the properties of our class.  This can be done in JS but in TS you get an error\n\nsyntax:\n```\n[placeHolder:DatatypeOfProperty]:DataTypeContainedInProperty\n```"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "//How we do this in JS\nknightRider2.year=1982"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "2:14 - Property 'year' does not exist on type 'Car'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class PokemonRatings{\n    [pokemonName:string]:Number\n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let myRatings=new PokemonRatings()\nmyRatings[\"Arceus\"]=1\nmyRatings"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "PokemonRatings { Arceus: \u001b[33m1\u001b[39m }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "myRatings[\"Arceus\"]=\"Best\""
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:1 - Type 'string' is not assignable to type 'Number'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "myRatings[[\"Charmander\",\"Arceus\"]]=1\nmyRatings"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:11 - Type 'string[]' cannot be used as an index type.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"static\"></a>\n\n### Static"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "The `static` keyword denotes that the property maintains its value across all instances, and also must be used without an instance.\n\nTo access a Static Property we call its by class name. `ClassName.staticProperty`"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class Counter{\n    public static count:number = 0   \n    \n    increaseCount():void{\n        Counter.count++\n    }\n    \n    static showCount():void{\n        console.log(\"The count is\", Counter.count)\n    }\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\u001b[33m0\u001b[39m",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "#### Accessing"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "console.log(Counter.count)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\u001b[33m0\u001b[39m",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let counter1=new Counter()\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "counter1.count // Can not Access"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:10 - Property 'count' is a static member of type 'Counter'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "All Members of the Counter class share the same count property!"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "counter1.increaseCount()\nconsole.log(Counter.count)\nlet counter2=new Counter()\ncounter2.increaseCount()\ncounter2.increaseCount()\nconsole.log(Counter.count)\n"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\u001b[33m1\u001b[39m",
+                                "\u001b[33m3\u001b[39m",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "//Nope\ncounter2.showCount() "
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "2:10 - Property 'showCount' is a static member of type 'Counter'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "Counter.showCount()"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "The count is \u001b[33m3\u001b[39m",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"inherit\"></a>\n\n## Inheritance"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "We are going to make a Duck class then define children classes to represent different kinds of ducks.  \n\nHere we will use the `protected` access modifier for the first time.  Remember protected means that the child class can access the property, while if it was made private it would not be able to be accessed in the child class\n\n<b>Note: </b>In python a class can inherit from multiple classes.  This is not possible in JavaScript/TypeScript.  You can only extend one class in JS/TS this is to prevent the so-called diamond problem (when two extended classes have the same base class).  This is fine and normal in most languages because JS also provides Interfaces and a class can implement many Interfaces (more on interfaces later)"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class Duck{\n    public static className:string = \"Duck\" \n    \n    constructor(protected age$:number){\n    }\n    \n    get age():number{\n        return this.age$\n    }\n    \n    public quack():void{\n        console.log(\"Generic Quack Sound\")\n    }\n    \n    public swim():void{\n        console.log(\"paddles with two little feet\")\n    }\n    \n}\nconsole.log(Duck.className)\nlet daffy= new Duck(39)\ndaffy.quack()\ndaffy.swim()\ndaffy.age"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Duck",
+                                "Generic Quack Sound",
+                                "paddles with two little feet",
+                                "\u001b[33m39\u001b[39m",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "#### In the Child Class"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "To inherit from a class in JS/TS we use the extends keyword\n\n<b>Note </b> When adding parameters that are part of the parent class we do not add access modifiers"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class MallardDuck extends Duck{\n    public static className=\"MallardDuck\"\n\n    constructor(public color:string, age:number){\n        super(age)\n    }\n}\n\nlet mallard = new MallardDuck(\"brown\", 2)\nconsole.log(MallardDuck.className)\nconsole.log(Duck.className)\nconsole.log(mallard.age)\nmallard.quack()\nmallard.swim()\nconsole.log(mallard.color)\n"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "MallardDuck",
+                                "Duck",
+                                "\u001b[33m2\u001b[39m",
+                                "Generic Quack Sound",
+                                "paddles with two little feet",
+                                "brown",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "daffy.color // Duck's don't have a color"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:7 - Property 'color' does not exist on type 'Duck'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "### Protected Variables are Accessible in the Child Class"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Try switching the access modifier on serialNo to `private` and you will see you cannot access it in the Roku class."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class TV{\n    constructor(protected serialNo:string){}\n}\nclass Roku extends TV{\n    showSerial(){\n        console.log(this.serialNo)\n    }\n}\n\nlet mytv=new Roku('4AS567DT')\nmytv.showSerial()"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "4AS567DT",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"methover\"></a>\n\n### Method Overrides"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Now we notice that our mallard makes a generic animal sounds instead of the mallard's quack sound, so we should implement a different way to quack that is specific to mallards, we can do this by overriding the parent class method"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "##### Implicit Overrides"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "If you create a method in a child class with the same name as a method in the parent class, the child class will use the method definition from the child class, this is called a <b>method override</b>  This is done implicitly by the computer.  This is now considered bad practice and it is recommended to always use the `override` keyword (more on that next)"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "\nclass Duck {\n    public static className: string = 'Duck';\n  \n    constructor( protected age$: number) {}\n  \n    get age():number{\n      \n      return this.age$\n  }\n  \n    public quack(): void {\n      console.log('Generic Quack Sound');\n    }\n  \n    public swim(): void {\n      console.log('paddles with two little feet');\n    }\n  }\n  \n  class MallardDuck extends Duck {\n      //override keyword come after static and access modifiers\n    public static  className = 'MallardDuck';\n  \n    constructor(public color: string, age: number) {\n      super(age);\n    }\n  \n     get age():number{\n      // Lets Pretend all Mallards are 5 years old than other ducks\n      return this.age$ + 5\n  }\n  \n    public quack(): void {\n      console.log(\"Mallad's Quack\");\n    }\n  }\n  \n  let mallard2= new MallardDuck('brown', 2);\n  console.log(MallardDuck.className);\n  console.log(Duck.className);\n  console.log(mallard2.age);\n  mallard2.quack();\n  mallard2.swim();\n  "
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "MallardDuck",
+                                "Duck",
+                                "\u001b[33m7\u001b[39m",
+                                "Mallad's Quack",
+                                "paddles with two little feet",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"override\"></a>\n##### Explicit Overrides"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "TS 4.3 they added support for the `override` keyword.  This notebook runs 4.1, so the override keyword will not work.  Without it you get an implicit override, where TS infers you are overriding when you use the same name.\n\nThe `override` keyword is really useful for when you change your base class and maybe remove a method.  The Child classes with now get an error saying there is no method to override. "
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Since this notebook does not support the `override` keyword, we will have you checkout this file using StackBlitz\n\n[https://stackblitz.com/edit/w9pgd4?file=index.ts](https://stackblitz.com/edit/w9pgd4?file=index.ts)\n\nwhen using this code be sure to open the console (on the bottom right below the browser output)"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"polym\"></a>\n\n### Polymorphism"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Polymorphism means having many forms.  What we have learned in TS so far is that you always need to know the datatype of your variables.  And if you say make an array you have to define what is in that array.  \n\nWhat polymorphism says is if one class (say MallardDuck) inherits from a class (say Duck) then every MallardDuck is a Duck. Also, all other Children of the Duck Class (say RedHeadedDuck) are also Ducks; and not to forget that Ducks are also Ducks.  This means we can build an Array&lt;Ducks&gt; and include Ducks, RedHeadedDucks, and Mallard Ducks.\n    \nIn OOP we often talk about the <b>Open-Closed Principal</b> The open–closed principle states \"software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification\";\n    \nPolymorphism is a key way we can help achieve this goal"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<b>Lets </b> make another Type of Duck the ReadHeadedDuck"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "\n  class RedHeadedDuck extends Duck {\n    public static className = 'RedHeadedDuck';\n  \n    constructor(public color: string, age: number) {\n      super(age);\n    }\n  \n     get age():number{\n      // Lets Pretend all Redheaded ducks age a year slower\n      return this.age$ - 1\n  }\n  \n    public quack(): void {\n      console.log(\"RedHead Duck's Quack\");\n    }\n  }"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "RedHeadedDuck",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Let’s make an array of Ducks.  Since all Duck Types inherit from Duck we can declare the array and array of Ducks."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let duckArray:Duck[] = [\n    new Duck(23),\n    new MallardDuck(\"black\", 23),\n    new RedHeadedDuck(\"purple\", 23),\n]\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Now Lets watch Polymorphism in action\n\nThis is really cool, because all Ducks are implementing the same behaviors (methods) we can invoke them and get the results from each individual class."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "for (let duck of duckArray){\n    console.log(duck.age)\n    duck.quack()\n    duck.swim()\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\u001b[33m23\u001b[39m",
+                                "Generic Quack Sound",
+                                "paddles with two little feet",
+                                "\u001b[33m28\u001b[39m",
+                                "Mallad's Quack",
+                                "paddles with two little feet",
+                                "\u001b[33m22\u001b[39m",
+                                "RedHead Duck's Quack",
+                                "paddles with two little feet",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"dp\"></a>\n\n## OOP Design Patterns"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "There are alot of ways to design systems with classes and Abstract classes and interfaces (more of these last two things coming up)\n\nThe way you connect your Classes/Interface/Abstract Class make up your Design Pattern.  We are going to walk you through a good OOP design pattern in the next few sections"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"abs\"></a>\n\n## Abstract Classes"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Our `Duck` Class now has a problem.  We shouldn't be able to create a plain duck.  All Ducks in the world are some variation on the Duck class, but a plain generic Duck should never exist.  This means we shouldn't be able to make a new duck\n\n`let duck = Duck(23)` Should not be allowed because this doesn't make logical sense.\n\nDon't fear because we have a solution for this.  We will use an `Abstract Class`  An Abstract Class is a class typically without method implementations, or implementations that function the same for all children classes.  In an Abstract class we merely define that a method should exist and that the children classes should define their own implantation..\n\nWe use the keyword `abstract` to define a method that is abstract (or will not have an implementation) We also don't give that function a body.  If we don't define the method as abstract then it will need a method body"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "abstract class Duck{\n    // We will added this next line after we realize we can't print the color from the child classes\n//     color:string\n    constructor(protected age$:number){}\n    get age(){return this.age$}\n    abstract quack():void\n    abstract swim():void\n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let aduck = new Duck(23)  //Error"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:13 - Cannot create an instance of an abstract class.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class MallardDuck extends Duck {\n\n    constructor(public color: string, age: number) {\n        super(age);\n    }\n\n    get age():number{\n        // Lets Pretend all Mallards are 5 years old than other ducks\n        return this.age$ + 5\n    }\n\n    quack(): void {\n        console.log(\"Mallad's Quack\");\n    }\n    \n    swim():void{\n        console.log(\"Swimming like a Mallard\")\n    } \n}\n\nclass RedHeadedDuck extends Duck {\n\n    constructor(public color: string, age: number) {\n        super(age);\n    }\n\n    get age():number{\n        // Lets Pretend all Red Headed Ducks are 1 years younger than other ducks\n        return this.age$ - 1\n    }\n\n    quack(): void {\n        console.log(\"Red Headed Duck's Quack\");\n    }\n        \n    swim():void{\n        console.log(\"Swimming like a RedHeaded Duck\")\n    } \n}\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let aMallard = new MallardDuck(\"black\", 23)\nlet aReadhead = new RedHeadedDuck(\"purple\", 23)\nlet duckyArray:Duck[]=[aMallard, aReadhead]\n\nfor (let duck of duckyArray){\n    console.log(duck.age)\n    duck.quack()\n    duck.swim()\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\u001b[33m28\u001b[39m",
+                                "Mallad's Quack",
+                                "Swimming like a Mallard",
+                                "\u001b[33m22\u001b[39m",
+                                "Red Headed Duck's Quack",
+                                "Swimming like a RedHeaded Duck",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<b>What happened with Color?</b>"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Lets Try and get the ducks color the same way.\n\nwhen we run the code below we get \n\n```Property 'color' does not exist on type 'Duck'.```\nWe know MallardDuck and RedheadedDuck have the property color, but since we are accessing the RedHeaded and Mallard Ducks as a Duck Type (since they are in a array of Ducks not as RedheadedDuck|MallardDuck) we can not use the color property unless it is defined in the parent Abstract class.\n\nTo fix this we can go back to our base class of `Duck` and add the property `color:string` at the top of our `Duck` class.  Then rerun the cells defining `MallardDuck` and `RedheadedDuck` (to get the new copy of the Duck class) and then rerun the cell below and we should see out expected results"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "for (let duck of duckyArray){\n    console.log(duck.color)\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "2:22 - Property 'color' does not exist on type 'Duck'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"fly\"></a>\n\n#### Flying Ducks"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Let's imagine now we are tasked with adding the ability to fly to our ducks.  This will be simple to add a new method to our Abstract base class `Duck` then implement its specific functionality in the children classes `MallardDuck` and `RedHeaded Duck`.  And for simplicity lets remove the color property"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "abstract class Duck{\n    constructor(protected age$:number){}\n    get age(){return this.age$}\n    abstract quack():void\n    abstract swim():void\n    abstract fly():void\n}\n\nclass MallardDuck extends Duck {\n\n    constructor(age: number) {\n        super(age);\n    }\n\n    get age():number{\n        // Lets Pretend all Mallards are 5 years old than other ducks\n        return this.age$ + 5\n    }\n\n    quack(): void {\n        console.log(\"Mallad's Quack\");\n    }\n    \n    swim():void{\n        console.log(\"Swimming like a Mallard\")\n    } \n    \n    fly():void{\n        console.log(\"Fly like a Mallard\")\n    }\n}\n\nclass RedHeadedDuck extends Duck {\n\n    constructor(age: number) {\n        super(age);\n    }\n\n    get age():number{\n        // Lets Pretend all Red Headed Ducks are 1 years younger than other ducks\n        return this.age$ - 1\n    }\n\n    quack(): void {\n        console.log(\"Red Headed Duck's Quack\");\n    }\n        \n    swim():void{\n        console.log(\"Swimming like a RedHeaded Duck\")\n    } \n    \n    fly():void{\n        console.log(\"Fly like a Red Headed Duck\")\n    }\n}\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"decoy\"></a>\n\n#### Decoy Ducks"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Okay that was easy enough, but now we are required to make another type of duck, a duck decoy.  Lets Build our `DecoyDuck` class"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class DecoyDuck extends Duck {\n\n    constructor(age: number) {\n        super(age);\n    }\n\n    get age():number{\n        // Decoy ducks are just aged painted foam so they can have normal years\n        return this.age$\n    }\n\n    quack(): void {\n        console.log(\"I don't Know how to Squeek\");\n    }\n        \n    swim():void{\n        console.log(\"Floating on the pond like a decoy\")\n    } \n    \n    fly():void{\n        // What do we do here?  \n        // We must implement this method buy decoy ducks don't fly!\n        \n        return\n    }\n}\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "We Have now come across a problem with using the abstract class to derive all our Duck Types.  A Decoy Duck has no implementation of fly, and thus we should not be implementing a fly method on a decoy duck.\n\nNever Fear! Interfaces are here!  An Interface lets you define methods that a class needs to implement.  It can also be used as a type."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"ice1\"></a>\n\n## In Class Exercise #1"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Create a class `Car` and then create 2 car subclasses `SmartCar`, `Truck`.\nAll Cars should be able to `brake` `drive` and `honk`\n\n- When a SmartCar drives it makes `hummmm` sound and when it honks it makes a `MMmeep` sound\n- When a Truck drives it makes a `vrooom` sound and when it honks it makes `BWaaaaaahp`\n- When a Truck or a SmartCar brakes it makes `squeeel` sound"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "//Solution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"interfaces\"></a>\n\n### Interfaces"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Let's redefine our Ducks now using Interfaces. Interfaces are generally names with the suffix `able` because the Interface says anything that implements me is able to do these actions.\n\nInterfaces also work with Polymorphism. \n\nTo say a class uses an interface we use the keyword `implements`\n\nA class can implement many interfaces, yet extend only one class.\n\nAn Interface can enforce many different methods/properties, but in this example we will keep it to one method per interface.  The Age property should belong to all ducks still, so we will keep the Duck base class to hold the age, for these examples we will assume the ducks all age exactly the same, so there will be no need to override the getters for age.\n\n<i>Interface vs Type</i>\n\nInterfaces and Types are extremely similar in TypeScript and for the most part Interfaces and Types can be used interchangeably in TypeScript.\n\nfor an in-depth discussion on the differences visit https://www.educba.com/typescript-type-vs-interface/\n\nInterfaces are created to say this class will work with anything that needs this interface.  You can think of a CD as an interface.  There are tons of different CDs with different information on them, but they can all be put into a CD player to play there contents.  The CD is an interface that works with a CD Player then different artists can use the CD interface to create there own CDs filled with their own music.\n\n\n<strong>Note </strong> Interfaces do not have method bodies (Abstract classes have method bodies)"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "abstract class Duck{\n    constructor(protected age$: number){}\n    get age(){return this.age$}\n}\n\ninterface Quackable{\n    quack():void\n}\ninterface Swimmable{\n    swim():void\n}\ninterface Flyable{\n    fly():void\n}\n\n\nclass MallardDuck extends Duck implements Quackable, Swimmable, Flyable {\n    constructor(age: number){\n        super(age)\n    }\n\n    \n    quack(): void {\n        console.log(\"Mallad's Quack\");\n    }\n    \n    swim():void{\n        console.log(\"Swimming like a Mallard\")\n    } \n    \n    fly():void{\n        console.log(\"Fly like a Mallard\")\n    }\n}\n\nclass RedHeadedDuck  extends Duck implements Quackable, Swimmable, Flyable  {\n    quack(): void {\n        console.log(\"Red Headed Duck's Quack\");\n    }\n        \n    swim():void{\n        console.log(\"Swimming like a RedHeaded Duck\")\n    } \n    \n    fly():void{\n        console.log(\"Fly like a Red Headed Duck\")\n    }\n}\n\n//Decoy ducks don't fly so the don't implement Flyable\nclass DecoyDuck extends Duck implements Quackable, Swimmable{\n    constructor(age: number){\n        super(age)\n    }\n    \n    quack(): void {\n        console.log(\"I don't Know how to Squeek\");\n    }\n        \n    swim():void{\n        console.log(\"Floating on the pond like a decoy\")\n    } \n}\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "We can use the Interface as a type to make an array of all the ducks that Quack"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let quackingArray:Quackable[] = [\n    new MallardDuck(23),\n    new RedHeadedDuck(23),\n    new DecoyDuck(23)\n]\nfor (let duck of quackingArray){\n    // Here we can do anything a Quackable can do\n    duck.quack()\n//     console.log(duck.age) // This will error because Only works for ducks types\n//     duck.fly() //This will Error because Quackables are not guaranteed to fly\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Mallad's Quack",
+                                "Red Headed Duck's Quack",
+                                "I don't Know how to Squeek",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let flyingArray:Flyable[]=[\n    new MallardDuck(23),\n    new RedHeadedDuck(23),\n//     new DecoyDuck(23) // Cannot Add a DecoyDuck because he doesn't Fly\n]\n\nfor (let duck of flyingArray){\n    duck.fly()\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Fly like a Mallard",
+                                "Fly like a Red Headed Duck",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let newDuckArray:Duck[]=[\n    new MallardDuck(23),\n    new RedHeadedDuck(20),\n    new DecoyDuck(25) \n]\n\nfor (let duck of newDuckArray){\n    console.log(duck.age)\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\u001b[33m23\u001b[39m",
+                                "\u001b[33m20\u001b[39m",
+                                "\u001b[33m25\u001b[39m",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"ice2\"></a>\n## In Class Exercise #2"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Create a Interface Of MusicMedia that states anything implementing it should be able to `play` and create Classes: CD, Tape, Record to implement your interface\n\nTo implement play:\n\n- CDs will print \"Spins and read with Laser\"\n- Tapes will print \"Magnetic Tape is read\"\n- Records will print \"Needle reads grooves\""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "//Solution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"rubber\"></a>\n\n#### Rubber Duck / Final Design"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Lets take this a step futher, because we know we will be making a lot more types of ducks in the future.  Lets now assume a mallard and redheaded duck both quack and fly and swim the same and most ducks will have the same sort of flying and quacking and swimming mechanism.  Decoy ducks still fly, quack, and swim differently.  \n\nNow we are tasked with creating a Rubber Ducky.  A Rubber ducky will not be able to fly like our Decoy Duck, It will quack in its own squeaky way, and it will swim like the Decoy duck by floating.\n\nThis is our final iteration of this Duck Design"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "interface Quackable{\n    quack():void\n}\ninterface Swimmable{\n    swim():void\n}\ninterface Flyable{\n    fly():void\n}\nclass Quacks implements Quackable{\n    quack(){\n        console.log(\"Quack\")\n    }\n}\nclass Squeaks implements Quackable{\n    quack(){\n        console.log(\"Squeak\")\n    }\n}\nclass Muted implements Quackable{\n    quack(){\n        console.log(\"The Sound of Silence\")\n    }\n}\n\nclass Floats implements Swimmable{\n    swim(){\n        console.log(\"Floating\")\n    }\n}\n\nclass Swims implements Swimmable{\n    swim(){\n        console.log(\"Standard Duck Swim\")\n    }\n}\n\nclass FlyWithWings implements Flyable{\n    fly(){\n        console.log(\"Flys with the wings\")\n    }\n}\n\nclass NeverFlys implements Flyable{\n    fly(){\n        console.log(\"I don't fly\")\n    }\n}\n\nabstract class Duck implements Quackable, Swimmable, Flyable{\n    protected swimAbility$: Swimmable\n    protected quackAbility$: Quackable\n    protected flyAbility$: Flyable\n    \n   \n    constructor(protected age$: number){}\n    get age(){return this.age$}\n    \n    set flyAbility(fa:Flyable){\n        this.flyAbility$=fa\n    }\n    \n    set quackAbility(qa:Quackable){\n        this.quackAbility$=qa\n    }\n    \n    set swimAbility(sa:Swimmable){\n        this.swimAbility$=sa\n    }\n   \n    swim():void{\n        this.swimAbility$.swim()\n    }\n    \n    quack():void{\n        this.quackAbility$.quack()\n    }\n    \n    fly():void{\n        this.flyAbility$.fly()\n    }\n}\n\nclass MallardDuck extends Duck {\n    swimAbility$ = new Swims()\n    quackAbility$ = new Quacks()\n    flyAbility$ = new FlyWithWings()\n}\n\nclass RedHeadedDuck extends Duck {\n    swimAbility$ = new Swims()\n    quackAbility$ = new Quacks()\n    flyAbility$ = new FlyWithWings()\n}\n\nclass RubberDuck extends Duck {\n    swimAbility$ = new Floats()\n    quackAbility$ = new Squeaks()\n    flyAbility$ = new NeverFlys()\n}\n\nclass DecoyDuck extends Duck {\n    swimAbility$ = new Floats()\n    quackAbility$ = new Muted()\n    flyAbility$ = new NeverFlys()\n}\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let allDucks:Duck[]=[\n    new MallardDuck(4),\n    new RedHeadedDuck(1),\n    new DecoyDuck(23),\n    new RubberDuck(34)\n]\n\nfor (let duck of allDucks){\n    duck.fly()\n    duck.swim()\n    duck.quack() \n}\n"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Flys with the wings",
+                                "Standard Duck Swim",
+                                "Quack",
+                                "Flys with the wings",
+                                "Standard Duck Swim",
+                                "Quack",
+                                "I don't fly",
+                                "Floating",
+                                "The Sound of Silence",
+                                "I don't fly",
+                                "Floating",
+                                "Squeak",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"mpoly\"></a>\n\n### More Polymorphism"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "We can now use the parent class of duck to declare all our duck types and expect the all same abilities to work on each instance of duck"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let duck1: Duck = new MallardDuck(4)\nlet duck2: Duck = new RedHeadedDuck(1)\nlet duck3: Duck = new DecoyDuck(23)\nlet duck4: Duck = new RubberDuck(34)\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "for (let duck of [duck1, duck2, duck3, duck4]){\n    duck.fly()\n    duck.swim()\n    duck.quack() \n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Flys with the wings",
+                                "Standard Duck Swim",
+                                "Quack",
+                                "Flys with the wings",
+                                "Standard Duck Swim",
+                                "Quack",
+                                "I don't fly",
+                                "Floating",
+                                "The Sound of Silence",
+                                "I don't fly",
+                                "Floating",
+                                "Squeak",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "We also have the ability to change the implementations with this set up.  Lets make a RubberDuck learn to fly"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let rubberDucky: Duck = new RubberDuck(34)\nrubberDucky.flyAbility= new FlyWithWings()\nrubberDucky.fly()"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Flys with the wings",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"ptoi\"></a>\n\n#### Programming To Interface"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "This design can be further improved, but it is a quite flexible design.  What we are learning is the idea of <b>Programming to Interface</b>.  This is the idea could really be stated <b>program to a supertype</b>.  The declared type of the variables should be a supertype, usually an abstract class or interface, so that the objects assiged to those variables can be of any concrete implementation of the supertype, which means the decalring class doesn't have to know about the object types! "
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"xi\"></a>\n\n### Extending Interfaces"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "An interface can also be used alot like a type.  The main difference here is an interface describes the object while a type defines the object.  \n\nIn TypeScript, We can even extend interfaces with the extends keyword."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "interface Human{\n    firstName:string\n    lastName:string\n    zip:number\n}\n\ntype Post={\n    title:string,\n    body: string\n}\n\ninterface Poster extends Human{\n    posts:Post[],\n    lastPost:Date\n}\n\nlet myUser:Poster={\n    firstName:\"Joe\",\n    lastName:\"Biden\",\n    zip:75791,\n    lastPost:new Date(),\n    posts:[\n        {title:\"I am the President\", body:\"Thanks for Electing Me\"},\n        {title:\"I am Actually Awake\", body:\"I swear I am not sleeping\"},\n          ]\n}\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"gen\"></a>\n\n# Generics"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Sometimes we want to allow for all sorts of types for our variables.  We know using an `any` type is bad practice, so how can we accomplish this?  With the use of Generics!"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "\n<a id=\"gf\"></a>\n### Generic Functions"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "To create a generic function we will append the class name with `<` `placeholder to represent any type` `>` and we type the parameters with the placeholder.\n\n\nThis is very similar to how this is done in C++.\n\nYou will often see the placeholder labeled as `T` this stands for Template Class, but you can use anything you want here, but I would keep it to a single letter.\n\nWhen calling the function we can gernally just use our argument like normal, but if for some reason the compiler is unsure of our type we can append  `<` `Generic Type Placeholder` `>` after the name of the function"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "function genericFunction<T>(myGenericVar:T){\n        if (typeof myGenericVar ==\"string\"){\n            console.log(\"We Got a String Here\")\n        }else if (typeof myGenericVar ==\"number\"){\n            console.log(\"We got a Number here\")\n        }else{\n            console.log(\"We got something thats not a String or Number\")\n        }\n}\n\ngenericFunction<string>(\"a String\")\ngenericFunction(\"a String\")\ngenericFunction(123)\ngenericFunction(true)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "We Got a String Here",
+                                "We Got a String Here",
+                                "We got a Number here",
+                                "We got something thats not a String or Number",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"gc\"></a>\n\n### Generic Classes"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "To create a generic class we will append the class name with `<` `placeholder to represent any type` `>` and we type the parameters with the placeholder.\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class GenericTestClass<T>{\n    constructor(private myGenericVar:T){}\n    \n    get tType():string{\n        return typeof this.myGenericVar\n    }\n    \n    receiveTType<T>(tParam):string{\n        return typeof tParam\n    }\n    \n    useTType(){\n        if (typeof this.myGenericVar ==\"string\"){\n            console.log(\"We Got a String Here\")\n        }else if (typeof this.myGenericVar ==\"number\"){\n            console.log(\"We got a Number here\")\n        }else{\n            console.log(\"We got something thats not a String or Number\")\n        }\n        \n    }\n    \n    \n}\n\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let gtc1 = new GenericTestClass<string>(\"Random String\")\nconsole.log(gtc1.tType)\nconsole.log(gtc1.receiveTType(\"Works\"))\n// gtc.receiveType(100) //Doesn't work\ngtc1.useTType()"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "string",
+                                "string",
+                                "We Got a String Here",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let gtc2 = new GenericTestClass<number>(123_456_789)\nconsole.log(gtc2.tType)\nconsole.log(gtc2.receiveTType(100))\n// gtc2.receiveTType(\"doesn't work\") //Doesn't work\ngtc2.useTType()\n\n"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "number",
+                                "number",
+                                "We got a Number here",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let gtc3 = new GenericTestClass<number[]>([1,2,3,4])\nconsole.log(gtc3.tType)\nconsole.log(gtc3.receiveTType([100,200,300]))\n// gtc3.receiveTType(\"doesn't work\") //Doesn't work\ngtc3.useTType()\n"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "object",
+                                "object",
+                                "We got something thats not a String or Number",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"mg\"></a>\n\n### Multiple Generics"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class KeyValuePair<K,V>{\n    constructor(public key:K, public value:V){}\n    \n    doSomething():void{\n        console.log(\n            `${this.key} is of type ${typeof this.key},`,\n            `${this.value}  is of type ${typeof this.value}`)\n    }\n}\n\nlet kyp1=new KeyValuePair<number, string>(123,\"what\")\nkyp1.doSomething()\n\n\nlet kyp2=new KeyValuePair<number[], boolean>([1,2,3,4],true)\nkyp2.doSomething()"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "123 is of type number, what  is of type string",
+                                "1,2,3,4 is of type object, true  is of type boolean",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"gi\"></a>\n\n### Generic Interfaces"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "The following code will error when ran.  Be sure to use the autocomplete to see the effect of generics."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "interface Guest{\n    roomNumber:number\n}\n\ninterface Room{\n    noOfBeds:number\n}\n\ninterface Query<T>{\n    data:T|null,\n    error:string|null\n}\n\nfunction getUserOrRoom<T>():Query<T>{\n    //logic to get a User or a Room\n    \n    //This will cause an Error running this cell because \n    //we are returning data as null and not something of type T\n    // but if this was a real API call this would return data as Type T\n    return {data:null, error:null}\n}\n\n// Try using the tab's autocomplete here after data. \n// to see that our options are retricted to members of the T interface\ngetUserOrRoom<Guest>().data.roomNumber\n\ngetUserOrRoom<Room>().data.noOfBeds\n\n"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "evalmachine.<anonymous>:13",
+                                "getUserOrRoom().data.roomNumber;",
+                                "                    ^",
+                                "",
+                                "TypeError: Cannot read properties of null (reading 'roomNumber')",
+                                "    at evalmachine.<anonymous>:13:21",
+                                "    at evalmachine.<anonymous>:16:3",
+                                "\u001b[90m    at sigintHandlersWrap (node:vm:276:12)\u001b[39m",
+                                "\u001b[90m    at Script.runInThisContext (node:vm:127:14)\u001b[39m",
+                                "\u001b[90m    at Object.runInThisContext (node:vm:313:38)\u001b[39m",
+                                "    at Object.execute (C:\\Users\\kabei\\Anaconda3\\node_modules\\\u001b[4mtslab\u001b[24m\\dist\\executor.js:162:38)",
+                                "    at JupyterHandlerImpl.handleExecuteImpl (C:\\Users\\kabei\\Anaconda3\\node_modules\\\u001b[4mtslab\u001b[24m\\dist\\jupyter.js:219:38)",
+                                "    at C:\\Users\\kabei\\Anaconda3\\node_modules\\\u001b[4mtslab\u001b[24m\\dist\\jupyter.js:177:57",
+                                "    at async JupyterHandlerImpl.handleExecute (C:\\Users\\kabei\\Anaconda3\\node_modules\\\u001b[4mtslab\u001b[24m\\dist\\jupyter.js:177:21)",
+                                "    at async ZmqServer.handleExecute (C:\\Users\\kabei\\Anaconda3\\node_modules\\\u001b[4mtslab\u001b[24m\\dist\\jupyter.js:375:25)",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"gcon\"></a>\n\n### Generic Constraints"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Maybe we want to write a generic function that works with all ducks that extend the `Quacks` ability class we created earlier.  We can do this by saying `T extends Quacks`"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "function talkToDucks<T extends Quacks>(duck:T ){\n    duck.quack()\n}\ntalkToDucks(new MallardDuck(23))\ntalkToDucks(new DecoyDuck(23))\ntalkToDucks(new RubberDuck(23))\n\n// talkToDucks(\"Plucky Duck\")  // Error"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Quack",
+                                "The Sound of Silence",
+                                "Squeak",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"keyof\"></a>\n\n### keyof"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Sometime we need to work with the keys of an object, and if any string is allowed TypeScript could give us and Error (We won't go into these circumstances for brevity), so the `keyof` Operator restricts our options only to valid keys"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "interface Item {\n    id: number,\n    name:string;\n    price:number; \n}\n\nlet property:keyof Item;\n// Same as\n// let property:'name'|'price'|'id';\n\nproperty = 'name';\nproperty = 'id';\n\n// property = 'otherValue'; // Error not a key of Product"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "id",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"typemap\"></a>\n\n### Type Mapping"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Imagine we have an interface and all the properties are required.  Now lets imagine we need another version of this interface that allow all the properties to be optional.  We still need our original Required Interface, so we can't edit that and make the properties optional.  We could create a second Interface will all the same properties and make them optional.  This make a ton of work for us to maintain the interface because now we have to add properties in two locations.  The Solution for this is <b>Type Mapping</b>\n\nThis will take use of two tools we have already learned `keyof` and <b>Type Signatures</b>"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"optgen\"></a>\n\n### Optional&lt;T&gt;"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// Everything in the garage interface is required\ninterface Garage{\n    noOfCars:number,\n    doorType:string,\n    heated:boolean\n}\n\n//Type Mapping works by creating a type not interface\n// It uses Type Signatures along with keyof\n// remember a ? at the end makes something optional\ntype OptionalGarage={\n    [Key in keyof Garage]?:Garage[Key]\n}\n\nlet myGarage1:OptionalGarage={\n    noOfCars:12\n}\nmyGarage1"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{ noOfCars: \u001b[33m12\u001b[39m }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"rogen\"></a>\n\n### ReadOnly&lt;T&gt;"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "This will only work for Garage types, but with generics we can make this work for any type.  Instead of making it optional this time lets make it Read Only"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "type ReadOnly<T>={\n    readonly [Key in keyof T]:T[Key]\n}\n\ninterface ShopItem{\n    id:number,\n    title:string,\n    price:number\n}\n\nlet myShopItem: ReadOnly<ShopItem> ={\n    id:187,\n    title: \"SuperSoaker 9000\",\n    price: 89.99\n}\n\nmyShopItem.id=199"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "17:12 - Cannot assign to 'id' because it is a read-only property.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"util\"></a>\n\n### Built in Utility Types"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "The good news is we don't have to write this code normally because TypeScript provides a whole library of these utility types.\n\n[https://www.typescriptlang.org/docs/handbook/utility-types.html](https://www.typescriptlang.org/docs/handbook/utility-types.html)"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "<a id=\"hw\"></a>\n\n## Homework"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Design a flexible OOP system to describe characters in a RPG game\n\nThere are 4 Unique Characters which use Different Types of Attacking mechanisms and Defending mechanisms.\n\n- Orges - fights with club and defends with shield\n- Peons - fights with club and defends with shield\n- Knights - fights with a Sword and defends with Armor\n- Archer - fights with Bow and Arrow and has only is tunic to protect them\n\n- All Characters can collect gold and this will always be the same for every new type of character\n\nAt the end of this each character should be able to attack and defend and collect gold. If needed any character should be able to change his fighting style, say if a knight losing his sword, but finds a club he should be able to change his fighting mechanism to use the club\n\n<b>Hint: </b> To complete this assignment you will need multiple classes and interfaces and an Abstract class\n\nYou can use our [Final Rubber Ducky Walkthrough](#rubber) example as a guide "
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "//Solution\n\n"
+            ],
+            "outputs": []
+        }
+    ]
+}
