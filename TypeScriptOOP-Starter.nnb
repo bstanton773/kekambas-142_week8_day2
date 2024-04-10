@@ -38,21 +38,9 @@
         {
             "language": "typescript",
             "source": [
-                "class Car {\r\n    //define the type of the properties\r\n    make:string\r\n    model:string\r\n    year:number\r\n\r\n    constructor(make: string, model:string, year:number){\r\n        // assign the properties\r\n        this.make = make\r\n        this.model = model\r\n        this.year = year\r\n    }\r\n\r\n    drive(miles:number):void{\r\n        console.log(`The ${this.year} ${this.make} ${this.model} has driven ${miles} miles`)\r\n    }\r\n}"
+                "class Car{\r\n    // Define the type for the properties\r\n    make:string\r\n    model:string\r\n    year:number\r\n    \r\n    constructor(make:string, model:string, year:number){\r\n        this.make = make;\r\n        this.model = model;\r\n        this.year = year\r\n    }\r\n    \r\n    drive(miles:number):void{\r\n        console.log(`The ${this.year} ${this.make} ${this.model} has driven ${miles} miles`)\r\n    }\r\n}"
             ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "application/vnd.code.notebook.stdout",
-                            "value": [
-                                "",
-                                ""
-                            ]
-                        }
-                    ]
-                }
-            ]
+            "outputs": []
         },
         {
             "language": "typescript",
@@ -65,8 +53,7 @@
                         {
                             "mime": "application/vnd.code.notebook.stdout",
                             "value": [
-                                "Car { make: 'DeLorean', model: 'DMC-12', year: 1981 }",
-                                "",
+                                "Car { make: \u001b[32m'DeLorean'\u001b[39m, model: \u001b[32m'DMC-12'\u001b[39m, year: \u001b[33m1981\u001b[39m }",
                                 ""
                             ]
                         }
@@ -77,7 +64,7 @@
         {
             "language": "typescript",
             "source": [
-                "delorean.drive(45);"
+                "delorean.drive(45)"
             ],
             "outputs": [
                 {
@@ -86,7 +73,6 @@
                             "mime": "application/vnd.code.notebook.stdout",
                             "value": [
                                 "The 1981 DeLorean DMC-12 has driven 45 miles",
-                                "",
                                 ""
                             ]
                         }
@@ -97,7 +83,7 @@
         {
             "language": "typescript",
             "source": [
-                "let bronco = new Car('Ford', 'Bronco', 1994)\r\nconsole.log(bronco)"
+                "let bronco = new Car('Ford', 'Bronco', 1994);\r\nconsole.log(bronco)"
             ],
             "outputs": [
                 {
@@ -105,8 +91,7 @@
                         {
                             "mime": "application/vnd.code.notebook.stdout",
                             "value": [
-                                "Car { make: 'Ford', model: 'Bronco', year: 1994 }",
-                                "",
+                                "Car { make: \u001b[32m'Ford'\u001b[39m, model: \u001b[32m'Bronco'\u001b[39m, year: \u001b[33m1994\u001b[39m }",
                                 ""
                             ]
                         }
@@ -126,7 +111,6 @@
                             "mime": "application/vnd.code.notebook.stdout",
                             "value": [
                                 "The 1994 Ford Bronco has driven 88 miles",
-                                "",
                                 ""
                             ]
                         }
@@ -137,7 +121,7 @@
         {
             "language": "typescript",
             "source": [
-                "bronco.year = 1992;\r\nconsole.log(bronco)"
+                "bronco.year = 1992"
             ],
             "outputs": [
                 {
@@ -145,8 +129,26 @@
                         {
                             "mime": "application/vnd.code.notebook.stdout",
                             "value": [
-                                "Car { make: 'Ford', model: 'Bronco', year: 1992 }",
-                                "",
+                                "\u001b[33m1992\u001b[39m",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "console.log(bronco)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Car { make: \u001b[32m'Ford'\u001b[39m, model: \u001b[32m'Bronco'\u001b[39m, year: \u001b[33m1992\u001b[39m }",
                                 ""
                             ]
                         }
@@ -171,7 +173,14 @@
         {
             "language": "typescript",
             "source": [
-                "class Car2 {\r\n    //define the type of the properties\r\n    readonly id:number\r\n    make:string\r\n    model:string\r\n    year:number\r\n\r\n    constructor(id:number, make: string, model:string, year:number){\r\n        // assign the properties\r\n        this.id = id\r\n        this.make = make\r\n        this.model = model\r\n        this.year = year\r\n    }\r\n\r\n    drive(miles:number):void{\r\n        console.log(`The ${this.year} ${this.make} ${this.model} has driven ${miles} miles`)\r\n    }\r\n}"
+                "class Car{\n    // Define the type for the properties\n    readonly id:number\n    make:string\n    model:string\n    year:number\n    \n    constructor(id:number, make:string, model:string, year:number){\n        this.id = id;\n        this.make = make;\n        this.model = model;\n        this.year = year\n    }\n    \n    drive(miles:number):void{\n        console.log(`The ${this.year} ${this.make} ${this.model} has driven ${miles} miles`)\n    }\n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let delorean2 = new Car(1, 'DeLorean', 'DMC-12', 1981);\nconsole.log(delorean2)"
             ],
             "outputs": [
                 {
@@ -179,7 +188,7 @@
                         {
                             "mime": "application/vnd.code.notebook.stdout",
                             "value": [
-                                "",
+                                "Car { id: \u001b[33m1\u001b[39m, make: \u001b[32m'DeLorean'\u001b[39m, model: \u001b[32m'DMC-12'\u001b[39m, year: \u001b[33m1981\u001b[39m }",
                                 ""
                             ]
                         }
@@ -190,7 +199,7 @@
         {
             "language": "typescript",
             "source": [
-                "let delorean2 = new Car2(1, 'DeLorean', 'DMC-12', 1981)\r\nconsole.log(delorean2);"
+                "console.log(delorean2.id)"
             ],
             "outputs": [
                 {
@@ -198,8 +207,7 @@
                         {
                             "mime": "application/vnd.code.notebook.stdout",
                             "value": [
-                                "Car2 { id: 1, make: 'DeLorean', model: 'DMC-12', year: 1981 }",
-                                "",
+                                "\u001b[33m1\u001b[39m",
                                 ""
                             ]
                         }
@@ -216,20 +224,10 @@
                 {
                     "items": [
                         {
-                            "mime": "application/vnd.code.notebook.stdout",
+                            "mime": "application/vnd.code.notebook.stderr",
                             "value": [
-                                "",
+                                "1:11 - Cannot assign to 'id' because it is a read-only property.",
                                 ""
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "items": [
-                        {
-                            "mime": "text/plain",
-                            "value": [
-                                "\u001b[33m123\u001b[39m"
                             ]
                         }
                     ]
@@ -247,8 +245,7 @@
                         {
                             "mime": "application/vnd.code.notebook.stdout",
                             "value": [
-                                "Car2 { id: 123, make: 'DeLorean', model: 'DMC-12', year: 1981 }",
-                                "",
+                                "Car { id: \u001b[33m1\u001b[39m, make: \u001b[32m'DeLorean'\u001b[39m, model: \u001b[32m'DMC-12'\u001b[39m, year: \u001b[33m1981\u001b[39m }",
                                 ""
                             ]
                         }
@@ -273,30 +270,84 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "class Car{\n    // Define the type for the properties\n    readonly id:number\n    make:string\n    model:string\n    year:number\n    nickname?:string\n    \n    constructor(id:number, make:string, model:string, year:number, nickname:string|undefined = undefined){\n        this.id = id;\n        this.make = make;\n        this.model = model;\n        this.year = year;\n        this.nickname = nickname\n    }\n    \n    drive(miles:number):void{\n        console.log(`The ${this.year} ${this.make} ${this.model} has driven ${miles} miles`)\n    }\n}"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let delorean3 = new Car(2, 'DeLorean', 'DMC-12', 1981);\nconsole.log(delorean3)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Car {",
+                                "  id: \u001b[33m2\u001b[39m,",
+                                "  make: \u001b[32m'DeLorean'\u001b[39m,",
+                                "  model: \u001b[32m'DMC-12'\u001b[39m,",
+                                "  year: \u001b[33m1981\u001b[39m,",
+                                "  nickname: \u001b[90mundefined\u001b[39m",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "delorean3.nickname = 'Time Traveler';\n\nconsole.log(delorean3)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Car {",
+                                "  id: \u001b[33m2\u001b[39m,",
+                                "  make: \u001b[32m'DeLorean'\u001b[39m,",
+                                "  model: \u001b[32m'DMC-12'\u001b[39m,",
+                                "  year: \u001b[33m1981\u001b[39m,",
+                                "  nickname: \u001b[32m'Time Traveler'\u001b[39m",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let batmobile = new Car(3, 'Wayne', 'Truck/Motorcycle', 2008, 'Batmobile');\n\nconsole.log(batmobile)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Car {",
+                                "  id: \u001b[33m3\u001b[39m,",
+                                "  make: \u001b[32m'Wayne'\u001b[39m,",
+                                "  model: \u001b[32m'Truck/Motorcycle'\u001b[39m,",
+                                "  year: \u001b[33m2008\u001b[39m,",
+                                "  nickname: \u001b[32m'Batmobile'\u001b[39m",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -322,30 +373,81 @@
         {
             "language": "typescript",
             "source": [
-                "// Python API Wrapper example - Does not actually work!!!!\n// Example shows encapsulation. The people using the program don't \n// actually use the _get method. \n\nclass APIWrapper:\n    def _get(self, data):\n        url = 'www.someurl.com/'+data\n        res = requests.get(url)\n        return res.json()\n\n    def get_pokemon(self, poke_name):\n        data = self._get(poke_name)\n        pokemon = Pokemon(data)\n        return pokemon\n\n    def get_berry(self, berry_name):\n        data = self._get(berry_name)\n        berry = Berry(data)\n        return berry\n\n\n\n\n\nclient = APIWrapper()\npikachu = client.get_pokemon('pikachu');\ncheri = client.get_berry('cheri');\n\n"
+                "// Python API Wrapper example - Does not actually work!!!!\n// Example shows encapsulation. The people using the program don't \n// actually use the __get method. \n\nclass APIWrapper:\n    def __get(self, data):\n        url = 'www.someurl.com/'+data\n        res = requests.get(url)\n        return res.json()\n\n    def get_pokemon(self, poke_name):\n        data = self.__get(poke_name)\n        pokemon = Pokemon(data)\n        return pokemon\n\n    def get_berry(self, berry_name):\n        data = self.__get(berry_name)\n        berry = Berry(data)\n        return berry\n\n\n\n\n\nclient = APIWrapper()\n\npikachu = client.get_pokemon('pikachu');\ncheri = client.get_berry('cheri');\n\n"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "class Student{\n    // define the properties of a Student\n    private readonly id: number\n    public firstName: string\n    public lastName: string\n    public teacher: string\n    public grade?: string\n    \n    constructor(id:number, firstName:string, lastName:string, teacher:string, grade:string|undefined=undefined){\n        this.id = id;\n        this.firstName = firstName;\n        this.lastName = lastName;\n        this.teacher = teacher;\n        this.grade = grade;\n    }\n    \n    public getInfo():void{\n        console.log(`Student #${this.id} is ${this.firstName} ${this.lastName} in ${this.teacher}'s class`)\n        console.log('Current Grade:', this.grade ?? 'N/A')\n    }\n}"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let student1 = new Student(1, 'Peter', 'Parker', 'Mr. Goblin', 'A+');\nconsole.log(student1)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Student {",
+                                "  id: \u001b[33m1\u001b[39m,",
+                                "  firstName: \u001b[32m'Peter'\u001b[39m,",
+                                "  lastName: \u001b[32m'Parker'\u001b[39m,",
+                                "  teacher: \u001b[32m'Mr. Goblin'\u001b[39m,",
+                                "  grade: \u001b[32m'A+'\u001b[39m",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                "\n// Private variable `id` is able to be accessed here because it was accessed in the class itself"
+                "student1.getInfo()\n// Private variable `id` is able to be accessed here because it was accessed in the class itself"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Student #1 is Peter Parker in Mr. Goblin's class",
+                                "Current Grade: A+",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let student2 = new Student(2, 'Mary Jane', 'Watson', 'Mrs. Sandman')\nstudent2.getInfo()"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Student #2 is Mary Jane Watson in Mrs. Sandman's class",
+                                "Current Grade: N/A",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -357,16 +459,60 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "console.log(student1.id)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:22 - Property 'id' is private and only accessible within class 'Student'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                "// public properties can be accesses outside of the class\n"
+                "console.log(student2.id)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:22 - Property 'id' is private and only accessible within class 'Student'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// public properties can be accesses outside of the class\nconsole.log(student1.firstName);\nconsole.log(student2.firstName);"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Peter",
+                                "Mary Jane",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -385,37 +531,93 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "class Student{\n    // define the properties of a Student\n    public grade?: string\n    \n    constructor(\n        private readonly _id: number,\n        public firstName: string,\n        public lastName: string,\n        public teacher: string\n    ){}\n    \n    public getInfo():void{\n        console.log(`Student #${this._id} is ${this.firstName} ${this.lastName} in ${this.teacher}'s class`)\n        console.log('Current Grade:', this.grade ?? 'N/A')\n    }\n}"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let student3 = new Student(3, 'Harry', 'Ozborn', 'Ms. May');\nconsole.log(student3)\nstudent3.getInfo()"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Student {",
+                                "  _id: \u001b[33m3\u001b[39m,",
+                                "  firstName: \u001b[32m'Harry'\u001b[39m,",
+                                "  lastName: \u001b[32m'Ozborn'\u001b[39m,",
+                                "  teacher: \u001b[32m'Ms. May'\u001b[39m,",
+                                "  grade: \u001b[90mundefined\u001b[39m",
+                                "}",
+                                "Student #3 is Harry Ozborn in Ms. May's class",
+                                "Current Grade: N/A",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "console.log(student3._id)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:22 - Property '_id' is private and only accessible within class 'Student'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "console.log(student3.firstName)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Harry",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "console.log(student3.lastName)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Ozborn",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -441,16 +643,28 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "class Car {\n    constructor(\n        private _make:string,\n        private _model: string,\n        public nickname: string\n    ){}\n    \n    get make():string{\n        return this._make\n    }\n    \n    get model():string{\n        // Every car model ends with -XYZ\n        return this._model + \"-XYZ\"\n    }\n    \n    get test():string{\n        return 'This is a test'\n    }\n}"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let knightRider = new Car('Pontiac', 'Trans-Am', 'Kitt');\nconsole.log(knightRider);"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Car { _make: \u001b[32m'Pontiac'\u001b[39m, _model: \u001b[32m'Trans-Am'\u001b[39m, nickname: \u001b[32m'Kitt'\u001b[39m }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -462,16 +676,40 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "knightRider.nickname"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Kitt",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "knightRider.nickname = 'Kitt 2000';\nconsole.log(knightRider)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Car { _make: \u001b[32m'Pontiac'\u001b[39m, _model: \u001b[32m'Trans-Am'\u001b[39m, nickname: \u001b[32m'Kitt 2000'\u001b[39m }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -483,9 +721,40 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "knightRider._make"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:13 - Property '_make' is private and only accessible within class 'Car'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "knightRider._model"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:13 - Property '_model' is private and only accessible within class 'Car'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -497,23 +766,59 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "knightRider.make"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Pontiac",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "knightRider.model"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Trans-Am-XYZ",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "console.log(knightRider.test)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "This is a test",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
@@ -539,7 +844,7 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "class Person {\n    constructor(private _first:string, private _last:string){}\n    \n    get first():string{\n        return this._first\n    }\n    \n    get last():string{\n        return this._last\n    }\n    \n    get fullName():string{\n        return this._first + ' ' + this._last\n    }\n    \n    set first(newFirst:string){\n        this._first = newFirst[0].toUpperCase() + newFirst.slice(1).toLocaleLowerCase()\n    }\n    \n    set last(newLast:string){\n        this._last = newLast[0].toUpperCase() + newLast.slice(1).toLocaleLowerCase()\n    }\n}"
             ],
             "outputs": []
         },
@@ -553,44 +858,184 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "let person1 = new Person('Shohei', 'Ohtani');\nconsole.log(person1)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Person { _first: \u001b[32m'Shohei'\u001b[39m, _last: \u001b[32m'Ohtani'\u001b[39m }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "console.log(person1.first)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Shohei",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "console.log(person1.last)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Ohtani",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "console.log(person1.fullName)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Shohei Ohtani",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "person1.first = 'miKE'\nperson1.last = 'tRoUT'\nconsole.log(person1)\nconsole.log(person1.fullName)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Person { _first: \u001b[32m'Mike'\u001b[39m, _last: \u001b[32m'Trout'\u001b[39m }",
+                                "Mike Trout",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class Person{\n    private _age:number\n    \n    get age():number{\n        return this._age\n    }\n    \n    set age(value:number){\n        if (value > 0 && value <= 110){\n            this._age = value\n        } else {\n            console.error('That is an invalid age')\n        }\n    }\n}"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let agePerson = new Person();\nagePerson.age = 99;\nconsole.log(agePerson.age)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\u001b[33m99\u001b[39m",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "agePerson.age = -10\nconsole.log(agePerson.age)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "That is an invalid age",
+                                ""
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\u001b[33m99\u001b[39m",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "agePerson.age = 145;\nconsole.log(agePerson.age)"
             ],
-            "outputs": []
-        },
-        {
-            "language": "typescript",
-            "source": [
-                ""
-            ],
-            "outputs": []
-        },
-        {
-            "language": "typescript",
-            "source": [
-                ""
-            ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "That is an invalid age",
+                                ""
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\u001b[33m99\u001b[39m",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -609,72 +1054,182 @@
         {
             "language": "typescript",
             "source": [
-                "//How we do this in JS\n"
+                "//How we do this in JS\nclass Person{\n    constructor(private _age:number){}\n    \n    get age():number{\n        return this._age\n    }\n    \n    set age(value:number){\n        if (value > 0 && value < 100){\n            this._age = value\n        }\n    }\n}"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let p1 = new Person(45)"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "p1.firstName = 'Brad'"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:4 - Property 'firstName' does not exist on type 'Person'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "p1.lastName = 'Pitt'"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:4 - Property 'lastName' does not exist on type 'Person'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class PokemonRatings {\n    [pokeName:string]: number\n}"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let myRatings = new PokemonRatings();"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                "// To set properties that are Index Signatures, use bracket notation\n"
+                "console.log(myRatings)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "PokemonRatings {}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "// To set properties that are Index Signatures, use bracket notation\nmyRatings['Pikachu'] = 90;\nconsole.log(myRatings)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "PokemonRatings { Pikachu: \u001b[33m90\u001b[39m }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "myRatings['Charizard'] = 99;\nconsole.log(myRatings)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "PokemonRatings { Pikachu: \u001b[33m90\u001b[39m, Charizard: \u001b[33m99\u001b[39m }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "myRatings['Squirtle'] = 'Very Cool'"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:1 - Type 'string' is not assignable to type 'number'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "myRatings[true] = 99"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:11 - Type 'true' cannot be used as an index type.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "console.log(myRatings)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "PokemonRatings { Pikachu: \u001b[33m90\u001b[39m, Charizard: \u001b[33m99\u001b[39m }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -693,7 +1248,7 @@
         {
             "language": "typescript",
             "source": [
-                "\n"
+                "class Counter{\n    public static count:number = 0\n    \n    increaseCount():void{\n        Counter.count++\n    }\n    \n    static showCount():void{\n        console.log(\"The count is:\", Counter.count)\n    }\n}\n"
             ],
             "outputs": []
         },
@@ -707,23 +1262,59 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "console.log(Counter.count)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\u001b[33m0\u001b[39m",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let counter1 = new Counter();\nconsole.log(counter1)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Counter {}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                "// Can not Access"
+                "console.log(counter1.count)  // Can not Access"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:22 - Property 'count' does not exist on type 'Counter'. Did you mean to access the static member 'Counter.count' instead?",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -735,37 +1326,123 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "counter1.increaseCount()\nconsole.log(Counter.count)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\u001b[33m1\u001b[39m",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let counter2 = new Counter();\ncounter2.increaseCount();\n\nconsole.log(Counter.count)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\u001b[33m2\u001b[39m",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "Counter.showCount()"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "The count is: \u001b[33m2\u001b[39m",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "counter1.showCount() //Nope\n"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:10 - Property 'showCount' does not exist on type 'Counter'. Did you mean to access the static member 'Counter.showCount' instead?",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "counter2.showCount()"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:10 - Property 'showCount' does not exist on type 'Counter'. Did you mean to access the static member 'Counter.showCount' instead?",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "counter1.increaseCount();\ncounter2.increaseCount();"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "Counter.showCount();"
             ],
-            "outputs": []
-        },
-        {
-            "language": "typescript",
-            "source": [
-                "//Nope\n"
-            ],
-            "outputs": []
-        },
-        {
-            "language": "typescript",
-            "source": [
-                ""
-            ],
-            "outputs": []
-        },
-        {
-            "language": "typescript",
-            "source": [
-                ""
-            ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "The count is: \u001b[33m4\u001b[39m",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -784,14 +1461,36 @@
         {
             "language": "typescript",
             "source": [
-                "\n"
+                "class Duck {\n    public static className: string = 'Duck';\n    \n    constructor(protected age$:number){}\n    \n    get age():number{\n        return this.age$\n    }\n    \n    public quack():void{\n        console.log('Quack!')\n    }\n    \n    public swim():void{\n        console.log('Paddles with two feet')\n    }\n}\n"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "console.log(Duck.className)\n\nlet daffy = new Duck(22);\nconsole.log(daffy.age);\ndaffy.quack()\ndaffy.swim()"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Duck",
+                                "\u001b[33m22\u001b[39m",
+                                "Quack!",
+                                "Paddles with two feet",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// console.log(daffy.age$)"
             ],
             "outputs": []
         },
@@ -812,23 +1511,51 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "class MallardDuck extends Duck {\n    public static className:string = 'MallardDuck'; // override the Duck className property\n    \n    constructor(public color:string, age:number){\n        super(age);\n    }\n}"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "console.log(MallardDuck.className)\n\nlet mallard1 = new MallardDuck('brown', 10)\nconsole.log(mallard1)\nmallard1.quack()\nmallard1.swim()\n\nconsole.log(mallard1.age)\n// console.log(mallard1.age$) // age$ is protected"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "MallardDuck",
+                                "MallardDuck { \u001b[32m'age$'\u001b[39m: \u001b[33m10\u001b[39m, color: \u001b[32m'brown'\u001b[39m }",
+                                "Quack!",
+                                "Paddles with two feet",
+                                "\u001b[33m10\u001b[39m",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                " // Duck's don't have a color"
+                "console.log(daffy) // Ducks don't have a color"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Duck { \u001b[32m'age$'\u001b[39m: \u001b[33m22\u001b[39m }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -847,14 +1574,59 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "class TV{\n    constructor(protected serialNo$:string){}\n}\n\nclass Roku extends TV {\n    constructor(protected wifiName:string, serialNo:string){\n        super(serialNo)\n    }\n    \n    showInfo():void{\n        console.log(`The serial number is: ${this.serialNo$}`)\n    }\n}"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                "// If we change the serialNo to a private property instead of protected,\n// the child class (Roku) is not able to access serialNo.\n"
+                "let myTV = new Roku('MyWifi', '358957345edsf');"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "myTV.showInfo()"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "The serial number is: 358957345edsf",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "console.log(myTV.serialNo$)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:18 - Property 'serialNo$' is protected and only accessible within class 'TV' and its subclasses.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// If we change the serialNo to a private property instead of protected,\n// the child class (Roku) is not able to access serialNo.\n\nclass TV{\n    constructor(protected serialNo$:string){}\n}\n\nclass Roku extends TV {\n    constructor(protected wifiName:string, serialNo:string){\n        super(serialNo)\n    }\n    \n    showInfo():void{\n        console.log(`The serial number is: ${this.serialNo$}`)\n    }\n}"
             ],
             "outputs": []
         },
@@ -873,6 +1645,26 @@
             "outputs": []
         },
         {
+            "language": "typescript",
+            "source": [
+                "mallard1.quack()\nmallard1.swim()"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Quack!",
+                                "Paddles with two feet",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "language": "markdown",
             "source": [
                 "##### Implicit Overrides"
@@ -889,23 +1681,53 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "class Duck {\n    public static className: string = 'Duck';\n    \n    constructor(protected age$:number){}\n    \n    get age():number{\n        return this.age$\n    }\n    \n    public quack():void{\n        console.log('Quack!')\n    }\n    \n    public swim():void{\n        console.log('Paddles with two feet')\n    }\n}\n\n\nclass MallardDuck extends Duck {\n    public static className:string = 'MallardDuck'\n    \n    constructor(public color:string, age){\n        super(age)\n    }\n    \n    // Let's pretend that all Mallard Ducks are always 5 years older than they claim\n    public get age():number{\n        return this.age$ + 5\n    }\n    \n    // Let's also override the quack method to have a mallard's quack\n    public quack():void{\n        console.log('Mallard Quack!!')\n    }\n}"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let duck = new Duck(7);\nconsole.log(duck)\nconsole.log(duck.age)\nduck.quack()\nduck.swim()"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Duck { \u001b[32m'age$'\u001b[39m: \u001b[33m7\u001b[39m }",
+                                "\u001b[33m7\u001b[39m",
+                                "Quack!",
+                                "Paddles with two feet",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let greenMallard = new MallardDuck('green', 9);\nconsole.log(greenMallard)\nconsole.log(greenMallard.age)\ngreenMallard.quack()\ngreenMallard.swim()"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "MallardDuck { \u001b[32m'age$'\u001b[39m: \u001b[33m9\u001b[39m, color: \u001b[32m'green'\u001b[39m }",
+                                "\u001b[33m14\u001b[39m",
+                                "Mallard Quack!!",
+                                "Paddles with two feet",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -952,7 +1774,7 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "class RedHeadedDuck extends Duck {\n    public static className:string = 'RedHeadedDuck'\n    \n    constructor(public color:string, age:number){\n        super(age)\n    }\n    \n    // We will pretend that all RedHeadedDucks are 1 year younger than they claim\n    get age():number{\n        return this.age$ - 1\n    }\n    \n    // Override the quack to make a RedHeadedDuck Quack\n    public quack():void{\n        console.log(\"RedHeaded Duck Quack!!\")\n    }\n}"
             ],
             "outputs": []
         },
@@ -966,16 +1788,46 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "let myStringArr: string[];\n\nmyStringArr = ['hi', 'hello', 'hola'];\n\nfor (let str of myStringArr){\n    console.log(str.toUpperCase())\n}"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "HI",
+                                "HELLO",
+                                "HOLA",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let myDuckArr: Duck[];\n\nmyDuckArr = [\n    new Duck(12),\n    new MallardDuck('blue', 11),\n    new RedHeadedDuck('red', 13)\n]"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[",
+                                "  Duck { \u001b[32m'age$'\u001b[39m: \u001b[33m12\u001b[39m },",
+                                "  MallardDuck { \u001b[32m'age$'\u001b[39m: \u001b[33m11\u001b[39m, color: \u001b[32m'blue'\u001b[39m },",
+                                "  RedHeadedDuck { \u001b[32m'age$'\u001b[39m: \u001b[33m13\u001b[39m, color: \u001b[32m'red'\u001b[39m }",
+                                "]",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -987,9 +1839,29 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "for (let duck of myDuckArr){\n    console.log(duck.age)\n    duck.quack()\n    duck.swim()\n}"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\u001b[33m12\u001b[39m",
+                                "Quack!",
+                                "Paddles with two feet",
+                                "\u001b[33m16\u001b[39m",
+                                "Mallard Quack!!",
+                                "Paddles with two feet",
+                                "\u001b[33m12\u001b[39m",
+                                "RedHeaded Duck Quack!!",
+                                "Paddles with two feet",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1015,51 +1887,134 @@
         {
             "language": "markdown",
             "source": [
-                "Our `Duck` Class now has a problem.  We shouldn't be able to create a plain duck.  All Ducks in the world are some variation on the Duck class, but a plain generic Duck should never exist.  This means we shouldn't be able to make a new duck\n\n`let duck = Duck(23)` Should not be allowed because this doesn't make logical sense.\n\nDon't fear because we have a solution for this.  We will use an `Abstract Class`  An Abstract Class is a class typically without method implementations, or implementations that function the same for all children classes.  In an Abstract class we merely define that a method should exist and that the children classes should define their own implantation..\n\nWe use the keyword `abstract` to define a method that is abstract (or will not have an implementation) We also don't give that function a body.  If we don't define the method as abstract then it will need a method body"
+                "Our `Duck` Class now has a problem.  We shouldn't be able to create a plain duck.  All Ducks in the world are some variation on the Duck class, but a plain generic Duck should never exist.  This means we shouldn't be able to make a new duck\n\n`let duck = new Duck(23)` Should not be allowed because this doesn't make logical sense.\n\nDon't fear because we have a solution for this.  We will use an `Abstract Class`  An Abstract Class is a class typically without method implementations, or implementations that function the same for all children classes.  In an Abstract class we merely define that a method should exist and that the children classes should define their own implantation..\n\nWe use the keyword `abstract` to define a method that is abstract (or will not have an implementation) We also don't give that function a body.  If we don't define the method as abstract then it will need a method body"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "abstract class Duck{\n    color:string\n    \n    constructor(protected age$:number){}\n    \n    get age():number{\n        return this.age$\n    }\n    \n    abstract quack():void;\n    abstract swim():void;\n}"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                "//Error"
+                "let duck = new Duck(23) //Error"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:12 - Cannot create an instance of an abstract class.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class MallardDuck extends Duck {\n    constructor(public color:string, age:number){\n        super(age)\n    }\n    \n    public quack():void{\n        console.log(\"Mallard Quack!!!\")\n    }\n    \n    public swim():void{\n        console.log('Swimming like a Mallard...')\n    }\n}"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "class RedHeadedDuck extends Duck {\n    constructor(public color:string, age:number){\n        super(age)\n    }\n    \n    public quack():void{\n        console.log(\"Red Headed Quack!!!\")\n    }\n    \n    public swim():void{\n        console.log('Swimming like a Red Headed Duck')\n    }\n}"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let aMallard = new MallardDuck('yellow', 14);\nconsole.log(aMallard)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "MallardDuck { \u001b[32m'age$'\u001b[39m: \u001b[33m14\u001b[39m, color: \u001b[32m'yellow'\u001b[39m }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let aRedHeaded = new RedHeadedDuck('purple', 17);"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let duckyArr: Duck[] = [aMallard, aRedHeaded];"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "for (let duck of duckyArr){\n    console.log(duck.age)\n    duck.quack()\n    duck.swim()\n    console.log(duck.color)\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\u001b[33m14\u001b[39m",
+                                "Mallard Quack!!!",
+                                "Swimming like a Mallard...",
+                                "yellow",
+                                "\u001b[33m17\u001b[39m",
+                                "Red Headed Quack!!!",
+                                "Swimming like a Red Headed Duck",
+                                "purple",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class ColorlessDuck extends Duck{\n    quack():void{\n        console.log('The colorless duck is quacking')\n    }\n    \n    swim():void{\n        console.log('The colorless duck is swimming')\n    }\n}"
             ],
             "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let aColorless = new ColorlessDuck(33);\nconsole.log(aColorless);"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "ColorlessDuck { \u001b[32m'age$'\u001b[39m: \u001b[33m33\u001b[39m, color: \u001b[90mundefined\u001b[39m }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1078,9 +2033,28 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "for (let duck of duckyArr){\n    console.log(duck.age)\n    duck.quack()\n    duck.swim()\n    console.log(duck.color)\n}"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\u001b[33m14\u001b[39m",
+                                "Mallard Quack!!!",
+                                "Swimming like a Mallard...",
+                                "yellow",
+                                "\u001b[33m17\u001b[39m",
+                                "Red Headed Quack!!!",
+                                "Swimming like a Red Headed Duck",
+                                "purple",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1099,16 +2073,42 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "abstract class Duck{\n    constructor(protected age$:number){}\n    \n    get age():number{\n        return this.age$\n    }\n    \n    abstract quack():void;\n    abstract swim():void;\n    abstract fly():void;\n}\n\nclass MallardDuck extends Duck {\n    public quack():void{\n        console.log(\"Mallard Quack!!!\")\n    }\n    \n    public swim():void{\n        console.log('Swimming like a Mallard...')\n    }\n    \n    public fly():void{\n        console.log('Flying high in the sky like a Mallard does')\n    }\n}\n\nclass RedHeadedDuck extends Duck {\n    public quack():void{\n        console.log(\"Red Headed Quack!!!\")\n    }\n    \n    public swim():void{\n        console.log('Swimming like a Red Headed Duck')\n    }\n    \n    public fly():void{\n        console.log('Flying around in a Red Headed Duck kind of way')\n    }\n}"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let bMallard = new MallardDuck(20);\nlet bRedHeaded = new RedHeadedDuck(13);\n\nlet bDuckArr: Duck[] = [bMallard, bRedHeaded];"
             ],
             "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "for (let d of bDuckArr){\n    console.log(d.age);\n    d.quack()\n    d.swim()\n    d.fly()\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\u001b[33m20\u001b[39m",
+                                "Mallard Quack!!!",
+                                "Swimming like a Mallard...",
+                                "Flying high in the sky like a Mallard does",
+                                "\u001b[33m13\u001b[39m",
+                                "Red Headed Quack!!!",
+                                "Swimming like a Red Headed Duck",
+                                "Flying around in a Red Headed Duck kind of way",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1127,9 +2127,21 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "class DecoyDuck extends Duck {\n    quack():void{\n        console.log('I sit quietly because I am just a decoy');\n    }\n    \n    swim():void{\n        console.log('I float around and go with the flow')\n    }\n    \n//     fly():void{\n        // what do we do here?\n        // Duck abstract class states we MUST implement a fly method\n        // but decoy ducks don't fly!\n//     }\n}"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:7 - Non-abstract class 'DecoyDuck' does not implement inherited abstract member 'fly' from class 'Duck'.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1155,23 +2167,61 @@
         {
             "language": "typescript",
             "source": [
-                "//Solution\n"
+                "//Solution\nabstract class Car{\n    constructor(private _color:string, private _make:string, private _model: string){}\n    \n    get info():string{\n        return `${this._color} ${this._make} ${this._model}`\n    }\n    \n    public brake():void{\n        console.log('squeeeel')\n    }\n    \n    abstract drive():void;\n    abstract honk():void;\n}\n\n\nclass SmartCar extends Car{\n    public drive():void{\n        console.log(this.info, ' - hummms')\n    }\n    \n    public honk():void{\n        console.log(this.info, ' - MMmeep')\n    }\n}\n\nclass Truck extends Car{\n    public drive():void{\n        console.log(this.info, ' - vrooooom')\n    }\n    \n    public honk():void{\n        console.log(this.info, ' - BWaaahp')\n    }\n}"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let myCars: Car[] = [new SmartCar('blue', 'Tesla', 'Model X'), new Truck('red', 'Toyota', 'Tundra')]"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "for (let car of myCars){\n    console.log(car.info)\n    car.drive()\n    car.honk();\n    car.brake()\n}"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "blue Tesla Model X",
+                                "blue Tesla Model X  - hummms",
+                                "blue Tesla Model X  - MMmeep",
+                                "squeeeel",
+                                "red Toyota Tundra",
+                                "red Toyota Tundra  - vrooooom",
+                                "red Toyota Tundra  - BWaaahp",
+                                "squeeeel",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let plainCar = new Car('greed', 'Ford', 'Mustang')"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stderr",
+                            "value": [
+                                "1:16 - Cannot create an instance of an abstract class.",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1190,9 +2240,61 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "abstract class Duck{\n    constructor(protected age$: number){}\n    \n    public get age():number{\n        return this.age$\n    }\n}\n"
             ],
             "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "interface Quackable {\n    quack():void\n}\n\ninterface Swimmable {\n    swim():void\n}\n\ninterface Flyable {\n    fly():void\n    land():void\n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class MallardDuck extends Duck implements Quackable, Swimmable, Flyable {\n    quack():void{\n        console.log('Mallard Duck quacking!')\n    }\n    \n    swim():void{\n        console.log('Swimming like a Mallard Duck')\n    }\n    \n    fly():void{\n        console.log('Flying high like a mallard duck')\n    }\n    \n    land():void{\n        console.log('Mallard Duck is landing')\n    }\n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class RedHeadedDuck extends Duck implements Quackable, Swimmable, Flyable {\n    quack():void{\n        console.log('Red Headed Duck quacking!')\n    }\n    \n    swim():void{\n        console.log('Swimming like a Red Headed Duck')\n    }\n    \n    fly():void{\n        console.log('Flying around like a Red Headed Duck')\n    }\n    \n    land():void{\n        console.log('Red Headed Duck is landing')\n    }\n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// DecoyDucks don't fly so we won't implement the Flyable interface\n\nclass DecoyDuck extends Duck implements Quackable, Swimmable {\n    quack():void{\n        console.log(\"I don't quack because I am a decoy\")\n    }\n    \n    swim():void{\n        console.log(\"Floating around and going with the flow\")\n    }\n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let mallard123 = new MallardDuck(5);\nconsole.log(mallard123)\nconsole.log(mallard123.age)\n\nlet redHeaded123 = new RedHeadedDuck(7);\nconsole.log(redHeaded123);\nconsole.log(redHeaded123.age)\n\n\nlet decoy123 = new DecoyDuck(8);\nconsole.log(decoy123);\nconsole.log(decoy123.age)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "MallardDuck { \u001b[32m'age$'\u001b[39m: \u001b[33m5\u001b[39m }",
+                                "\u001b[33m5\u001b[39m",
+                                "RedHeadedDuck { \u001b[32m'age$'\u001b[39m: \u001b[33m7\u001b[39m }",
+                                "\u001b[33m7\u001b[39m",
+                                "DecoyDuck { \u001b[32m'age$'\u001b[39m: \u001b[33m8\u001b[39m }",
+                                "\u001b[33m8\u001b[39m",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1204,37 +2306,107 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "let quackingDucks: Quackable[] = [mallard123, redHeaded123, decoy123];\n\nfor (let duck of quackingDucks){\n    duck.quack()\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Mallard Duck quacking!",
+                                "Red Headed Duck quacking!",
+                                "I don't quack because I am a decoy",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let flyingDucks: Flyable[] = [\n    mallard123, \n    redHeaded123, \n//     decoy123  // Cannot add a DecoyDuck because it does not implement Flyable\n];"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "for (let duck of flyingDucks){\n    duck.fly();\n    duck.land()\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Flying high like a mallard duck",
+                                "Mallard Duck is landing",
+                                "Flying around like a Red Headed Duck",
+                                "Red Headed Duck is landing",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// Interfaces can be used on other classes as well\n\nclass Fish implements Swimmable {\n    constructor(private _name:string){}\n    \n    get name():string{\n        return this._name\n    }\n    \n    swim():void{\n        console.log(`${this.name} is swimming`)\n    }\n}\n\nlet nemo = new Fish('Nemo')"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "console.log(nemo.name)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Nemo",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let swimmingAnimals: Swimmable[] = [mallard123, redHeaded123, decoy123, nemo];"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                "// Interfaces can be used on other classes as well\n"
+                "for (let animal of swimmingAnimals){\n    animal.swim()\n}"
             ],
-            "outputs": []
-        },
-        {
-            "language": "typescript",
-            "source": [
-                ""
-            ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Swimming like a Mallard Duck",
+                                "Swimming like a Red Headed Duck",
+                                "Floating around and going with the flow",
+                                "Nemo is swimming",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1253,23 +2425,37 @@
         {
             "language": "typescript",
             "source": [
-                "//Solution\n"
+                "//Solution\n\ninterface Playable {\n    play():void\n}\n\n\nclass CD implements Playable {\n    play():void{\n        console.log('Spins and read with laser')\n    }\n}\n\nclass Tape implements Playable {\n    play():void{\n        console.log('Magnetic tape is read')\n    }\n}\n\nclass Record implements Playable {\n    play():void{\n        console.log('Needle reads grooves')\n    }\n}"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let cd = new CD();\nlet tape = new Tape();\nlet record = new Record();"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let media: Playable[] = [cd, tape, record];\n\n\nfor (let m of media){\n    m.play()\n}"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Spins and read with laser",
+                                "Magnetic tape is read",
+                                "Needle reads grooves",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1288,51 +2474,207 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "// Main Interface - Quack, Swim, Fly\ninterface Quackable {\n    quack():void\n}\n\ninterface Swimmable {\n    swim():void\n}\n\ninterface Flyable {\n    fly():void\n    land():void\n}\n\n\n// Set up classes for different ways of implementing the interface\n// Quacks - 3 types of Quacking - Quack, Sqeak, Muted\n\nclass Quacks implements Quackable{\n    quack():void{\n        console.log('Quack!')\n    }\n}\n\nclass Squeaks implements Quackable{\n    quack():void{\n        console.log('Sqeak!')\n    }\n}\n\nclass Muted implements Quackable{\n    quack():void{\n        console.log('...')\n    }\n}\n\n// Swim - 2 types of Swimming - Swim, Float\n\nclass Swims implements Swimmable {\n    swim():void{\n        console.log('Swimming with two little feet')\n    }\n}\n\nclass Floats implements Swimmable {\n    swim():void{\n        console.log('Floating around')\n    }\n}\n\n// Fly - 2 types of Flying - FlyWithWings, NeverFly\nclass FlyWithWings implements Flyable {\n    fly():void{\n        console.log('Flying high through the sky')\n    }\n    \n    land():void{\n        console.log('Safely landing on the ground')\n    }\n}\n\n\nclass NeverFlys implements Flyable {\n    fly():void{\n        console.log('Still on the ground... :(')\n    }\n    \n    land():void{\n        console.log('Never took off in the first place...')\n    }\n}\n\n\n// Create the abstract Duck class that implements the interfaces and has properties for the different\n// interface implementations\nabstract class Duck implements Quackable, Swimmable, Flyable {\n    protected quackAbility$: Quackable\n    protected swimAbility$: Swimmable\n    protected flyAbility$: Flyable\n    \n    constructor(protected age$:number){}\n    \n    get age():number{\n        return this.age$\n    }\n    \n    set quackAbility(qa:Quackable){\n        this.quackAbility$ = qa\n    }\n    \n    set swimAbility(sa:Swimmable){\n        this.swimAbility$ = sa\n    }\n    \n    set flyAbility(fa:Flyable){\n        this.flyAbility$ = fa\n    }\n    \n    quack():void{\n        this.quackAbility$.quack()\n    }\n    \n    swim():void{\n        this.swimAbility$.swim()\n    }\n    \n    fly():void{\n        this.flyAbility$.fly()\n    }\n    \n    land():void{\n        this.flyAbility$.land()\n    }\n}\n\n\n// Create classes that inherit from Duck\nclass MallardDuck extends Duck{\n    quackAbility$: Quackable = new Quacks()\n    swimAbility$: Swimmable = new Swims()\n    flyAbility$: Flyable = new FlyWithWings()\n}\n\nclass RedHeadedDuck extends Duck{\n    quackAbility$: Quackable = new Quacks()\n    swimAbility$: Swimmable = new Swims()\n    flyAbility$: Flyable = new FlyWithWings()\n}\n\nclass DecoyDuck extends Duck{\n    quackAbility$: Quackable = new Muted()\n    swimAbility$: Swimmable = new Floats()\n    flyAbility$: Flyable = new NeverFlys()\n    \n}\n\nclass RubberDuck extends Duck{\n    quackAbility$: Quackable = new Squeaks()\n    swimAbility$: Swimmable = new Floats()\n    flyAbility$: Flyable = new NeverFlys()\n}"
             ],
             "outputs": []
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let myMallard = new MallardDuck(6);\nconsole.log(myMallard)\nmyMallard.quack()\nmyMallard.swim()\nmyMallard.fly()\nmyMallard.land()"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "MallardDuck {",
+                                "  \u001b[32m'age$'\u001b[39m: \u001b[33m6\u001b[39m,",
+                                "  \u001b[32m'quackAbility$'\u001b[39m: Quacks {},",
+                                "  \u001b[32m'swimAbility$'\u001b[39m: Swims {},",
+                                "  \u001b[32m'flyAbility$'\u001b[39m: FlyWithWings {}",
+                                "}",
+                                "Quack!",
+                                "Swimming with two little feet",
+                                "Flying high through the sky",
+                                "Safely landing on the ground",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let myRedHeaded = new RedHeadedDuck(7);\nconsole.log(myRedHeaded);\nmyRedHeaded.quack()\nmyRedHeaded.swim()\nmyRedHeaded.fly()\nmyRedHeaded.land()"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "RedHeadedDuck {",
+                                "  \u001b[32m'age$'\u001b[39m: \u001b[33m7\u001b[39m,",
+                                "  \u001b[32m'quackAbility$'\u001b[39m: Quacks {},",
+                                "  \u001b[32m'swimAbility$'\u001b[39m: Swims {},",
+                                "  \u001b[32m'flyAbility$'\u001b[39m: FlyWithWings {}",
+                                "}",
+                                "Quack!",
+                                "Swimming with two little feet",
+                                "Flying high through the sky",
+                                "Safely landing on the ground",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let myDecoy = new DecoyDuck(5);\nconsole.log(myDecoy);\nmyDecoy.quack();\nmyDecoy.swim();\nmyDecoy.fly()\nmyDecoy.land()"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "DecoyDuck {",
+                                "  \u001b[32m'age$'\u001b[39m: \u001b[33m5\u001b[39m,",
+                                "  \u001b[32m'quackAbility$'\u001b[39m: Muted {},",
+                                "  \u001b[32m'swimAbility$'\u001b[39m: Floats {},",
+                                "  \u001b[32m'flyAbility$'\u001b[39m: NeverFlys {}",
+                                "}",
+                                "...",
+                                "Floating around",
+                                "Still on the ground... :(",
+                                "Never took off in the first place...",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let myRubberDuck = new RubberDuck(2);\nconsole.log(myRubberDuck)\nmyRubberDuck.quack()\nmyRubberDuck.swim()\nmyRubberDuck.fly()\nmyRubberDuck.land()"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "RubberDuck {",
+                                "  \u001b[32m'age$'\u001b[39m: \u001b[33m2\u001b[39m,",
+                                "  \u001b[32m'quackAbility$'\u001b[39m: Squeaks {},",
+                                "  \u001b[32m'swimAbility$'\u001b[39m: Floats {},",
+                                "  \u001b[32m'flyAbility$'\u001b[39m: NeverFlys {}",
+                                "}",
+                                "Sqeak!",
+                                "Floating around",
+                                "Still on the ground... :(",
+                                "Never took off in the first place...",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "let allMyDucks: Duck[] = [myMallard, myRedHeaded, myDecoy, myRubberDuck];\n\n\nfor (let duck of allMyDucks){\n    console.log('---------------------------------------')\n    duck.quack()\n    duck.fly()\n    duck.land()\n    duck.swim()\n    console.log('---------------------------------------')\n}"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "---------------------------------------",
+                                "Quack!",
+                                "Flying high through the sky",
+                                "Safely landing on the ground",
+                                "Swimming with two little feet",
+                                "---------------------------------------",
+                                "---------------------------------------",
+                                "Quack!",
+                                "Flying high through the sky",
+                                "Safely landing on the ground",
+                                "Swimming with two little feet",
+                                "---------------------------------------",
+                                "---------------------------------------",
+                                "...",
+                                "Still on the ground... :(",
+                                "Never took off in the first place...",
+                                "Floating around",
+                                "---------------------------------------",
+                                "---------------------------------------",
+                                "Sqeak!",
+                                "Still on the ground... :(",
+                                "Never took off in the first place...",
+                                "Floating around",
+                                "---------------------------------------",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "typescript",
             "source": [
-                ""
+                "console.log(allMyDucks)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[",
+                                "  MallardDuck {",
+                                "    \u001b[32m'age$'\u001b[39m: \u001b[33m6\u001b[39m,",
+                                "    \u001b[32m'quackAbility$'\u001b[39m: Quacks {},",
+                                "    \u001b[32m'swimAbility$'\u001b[39m: Swims {},",
+                                "    \u001b[32m'flyAbility$'\u001b[39m: FlyWithWings {}",
+                                "  },",
+                                "  RedHeadedDuck {",
+                                "    \u001b[32m'age$'\u001b[39m: \u001b[33m7\u001b[39m,",
+                                "    \u001b[32m'quackAbility$'\u001b[39m: Quacks {},",
+                                "    \u001b[32m'swimAbility$'\u001b[39m: Swims {},",
+                                "    \u001b[32m'flyAbility$'\u001b[39m: FlyWithWings {}",
+                                "  },",
+                                "  DecoyDuck {",
+                                "    \u001b[32m'age$'\u001b[39m: \u001b[33m5\u001b[39m,",
+                                "    \u001b[32m'quackAbility$'\u001b[39m: Muted {},",
+                                "    \u001b[32m'swimAbility$'\u001b[39m: Floats {},",
+                                "    \u001b[32m'flyAbility$'\u001b[39m: NeverFlys {}",
+                                "  },",
+                                "  RubberDuck {",
+                                "    \u001b[32m'age$'\u001b[39m: \u001b[33m2\u001b[39m,",
+                                "    \u001b[32m'quackAbility$'\u001b[39m: Squeaks {},",
+                                "    \u001b[32m'swimAbility$'\u001b[39m: Floats {},",
+                                "    \u001b[32m'flyAbility$'\u001b[39m: NeverFlys {}",
+                                "  }",
+                                "]",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1351,16 +2693,36 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "for (let duck of allMyDucks){\n    duck.quack();\n    duck.land();\n    duck.swim();\n    duck.fly()\n}"
             ],
-            "outputs": []
-        },
-        {
-            "language": "typescript",
-            "source": [
-                ""
-            ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Quack!",
+                                "Safely landing on the ground",
+                                "Swimming with two little feet",
+                                "Flying high through the sky",
+                                "Quack!",
+                                "Safely landing on the ground",
+                                "Swimming with two little feet",
+                                "Flying high through the sky",
+                                "...",
+                                "Never took off in the first place...",
+                                "Floating around",
+                                "Still on the ground... :(",
+                                "Sqeak!",
+                                "Never took off in the first place...",
+                                "Floating around",
+                                "Still on the ground... :(",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1372,9 +2734,66 @@
         {
             "language": "typescript",
             "source": [
-                ""
+                "myRubberDuck.fly()\nmyRubberDuck.land()"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Still on the ground... :(",
+                                "Never took off in the first place...",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "myRubberDuck.flyAbility = new FlyWithWings();\n\nmyRubberDuck.fly()\nmyRubberDuck.land()"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Flying high through the sky",
+                                "Safely landing on the ground",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "console.log(myRubberDuck)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "RubberDuck {",
+                                "  \u001b[32m'age$'\u001b[39m: \u001b[33m2\u001b[39m,",
+                                "  \u001b[32m'quackAbility$'\u001b[39m: Squeaks {},",
+                                "  \u001b[32m'swimAbility$'\u001b[39m: Floats {},",
+                                "  \u001b[32m'flyAbility$'\u001b[39m: FlyWithWings {}",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1799,7 +3218,14 @@
         {
             "language": "typescript",
             "source": [
-                "//Solution\n"
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
             ],
             "outputs": []
         },
